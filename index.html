@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Talent Finder</title>
+  <style>
+    :root {
+      --ink: #142033;
+      --muted: #5c6570;
+      --paper: #f4efe6;
+      --card: #fffdf8;
+      --line: #e3d9c8;
+      --teal: #0c7f86;
+      --teal-ink: #f4fffe;
+      --orange: #e36a2c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(227, 106, 44, 0.16), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(12, 127, 134, 0.18), transparent 32%),
+        var(--paper);
+      color: var(--ink);
+      font: 16px/1.5 Georgia, "Iowan Old Style", serif;
+    }
+    header, main { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 28px 0 8px; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .mark { width: 54px; height: 54px; }
+    h1 { font-size: 28px; line-height: 1; margin: 0; font-weight: 500; }
+    .slogan { margin: 4px 0 0; color: var(--teal); font-size: 14px; }
+    button, .ghost {
+      border: 0; border-radius: 999px; padding: 10px 16px; font: 600 14px/1.2 system-ui, sans-serif;
+      background: var(--teal); color: var(--teal-ink); cursor: pointer;
+    }
+    button.secondary, .ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+    main { display: grid; gap: 16px; padding-bottom: 48px; }
+    section, form.card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    }
+    h2 { margin: 0 0 8px; font-size: 26px; font-weight: 500; }
+    p { margin: 0; }
+    .muted { color: var(--muted); font-family: system-ui, sans-serif; font-size: 14px; }
+    .row { display: grid; gap: 10px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) {
+      .row.two { grid-template-columns: 1fr 1fr; }
+      .row.three { grid-template-columns: 1.2fr 1fr auto; align-items: end; }
+    }
+    label { display: grid; gap: 6px; font-family: system-ui, sans-serif; font-size: 13px; font-weight: 650; }
+    input, select, textarea {
+      width: 100%; border: 1px solid var(--line); background: #fff; color: var(--ink);
+      border-radius: 12px; padding: 12px; font: 16px/1.4 system-ui, sans-serif;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .note { background: #fff4e8; border-radius: 12px; padding: 10px 12px; font-family: system-ui, sans-serif; font-size: 14px; }
+    .grid { display: grid; gap: 12px; }
+    @media (min-width: 720px) { .grid.cards { grid-template-columns: 1fr 1fr; } }
+    article.person { overflow: hidden; padding: 0; }
+    article.person img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #ece4d6; display: block; }
+    article.person div { padding: 14px 16px 16px; }
+    .skill { color: var(--orange); font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    pre { white-space: pre-wrap; background: #142033; color: #f4efe6; border-radius: 12px; padding: 12px; font-size: 12px; overflow: auto; }
+    .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 500; }
+    .check input { width: auto; margin-top: 3px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#142033"/>
+        <circle cx="28" cy="28" r="12" fill="none" stroke="#f4efe6" stroke-width="3"/>
+        <path d="M37 37 L48 48" stroke="#e36a2c" stroke-width="4" stroke-linecap="round"/>
+        <path d="M22 40 h20 a8 8 0 0 1 8 8 v4 H14 v-4 a8 8 0 0 1 8-8z" fill="#0c7f86"/>
+      </svg>
+      <div>
+        <h1>Talent Finder</h1>
+        <p class="slogan">The right hands, one tap away</p>
+      </div>
+    </div>
+    <button id="sign-out" class="secondary" hidden type="button">Sign out</button>
+  </header>
+  <main>
+    <section>
+      <h2>Connect Supabase</h2>
+      <p class="muted">Paste your project URL and publishable key. They stay in this browser. The key must be the publishable (anon) key, never the secret key.</p>
+      <div class="row two" style="margin-top:12px">
+        <label>Project URL
+          <input id="sb-url" placeholder="https://xxxx.supabase.co" autocomplete="off" />
+        </label>
+        <label>Publishable key
+          <input id="sb-key" placeholder="sb_publishable_... or anon key" autocomplete="off" />
+        </label>
+      </div>
+      <div class="actions">
+        <button id="save-keys" type="button">Save and connect</button>
+      </div>
+      <p id="status" class="note" style="margin-top:12px" hidden></p>
+    </section>
+
+    <section id="auth-card">
+      <div class="tabs">
+        <button type="button" id="tab-in">Sign in</button>
+        <button type="button" id="tab-up" class="secondary">Sign up</button>
+      </div>
+      <form id="auth-form" class="row">
+        <label>Email
+          <input id="email" type="email" required autocomplete="username" />
+        </label>
+        <label>Password
+          <input id="password" type="password" required minlength="6" autocomplete="current-password" />
+        </label>
+        <div class="actions">
+          <button id="auth-submit" type="submit">Sign in</button>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Search by skill</h2>
+      <form id="search-form" class="row three">
+        <label>Skill
+          <input id="q" placeholder="Plumber, gardener, welder, home nurse" />
+        </label>
+        <label>Country
+          <select id="country-filter">
+            <option value="">Any country</option>
+          </select>
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      <div id="results" class="grid cards" style="margin-top:14px"></div>
+    </section>
+
+    <form id="profile-form" class="card" hidden>
+      <h2>Your profile</h2>
+      <p class="muted">A real photo of your best work. You do not have to be in it. Phone and email stay on your sign-in account and are not shown here.</p>
+      <div class="row two" style="margin-top:12px">
+        <label>Name clients should see
+          <input id="display-name" required minlength="2" />
+        </label>
+        <label>Skill
+          <input id="skill" list="skills" required placeholder="Type a skill or pick one" />
+        </label>
+        <label>Country
+          <select id="country" required></select>
+        </label>
+        <label>Town or area
+          <input id="place" required placeholder="Osu, Accra" />
+        </label>
+        <label>Years of experience
+          <input id="years" type="number" min="0" max="60" value="3" required />
+        </label>
+        <label>Social page, optional
+          <input id="social" placeholder="https://instagram.com/yourwork" />
+        </label>
+      </div>
+      <label style="margin-top:10px">About the work
+        <textarea id="about" required minlength="40" placeholder="Describe a real job you finished. At least 40 characters."></textarea>
+      </label>
+      <label style="margin-top:10px">Photo of your best work
+        <input id="photo" type="file" accept="image/jpeg,image/png,image/webp" />
+      </label>
+      <img id="preview" alt="" hidden style="margin-top:10px;width:100%;max-height:280px;object-fit:cover;border-radius:12px" />
+      <label class="check" style="margin-top:12px">
+        <input id="adult" type="checkbox" />
+        <span>I confirm I am 18 or older, and this photo is of work I have the right to show.</span>
+      </label>
+      <div class="actions">
+        <button type="submit">Publish profile</button>
+      </div>
+    </form>
+
+    <section>
+      <h2>Before you contact anyone</h2>
+      <p class="muted">Check the work, the place, and the person yourself before you hire. Talent Finder shows the profile the person published. It does not guarantee the person or the job.</p>
+      <details style="margin-top:12px">
+        <summary class="muted">Run this once in the Supabase SQL editor</summary>
+        <pre id="sql"></pre>
+      </details>
+    </section>
+  </main>
+  <datalist id="skills"></datalist>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const COUNTRIES = ["Ghana", "Nigeria", "Kenya", "South Africa", "Côte d'Ivoire", "Zambia"];
+    const SKILLS = ["Home tutor", "Gardener", "Painter", "Plumber", "Electrician", "Carpenter", "Welder", "Tailor", "Cleaner", "Laundry specialist", "Hairstylist", "Home nurse", "Nanny", "Cook", "Driver", "Mason", "Tiler", "Air conditioner repairer", "Fridge repairer", "Satellite installer", "Web designer", "Graphic designer", "Software developer", "IT support", "Photographer", "Event attendant", "Shoemaker", "Veterinarian", "Organist"];
+    const SQL = `create table if not exists public.profiles (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  display_name text not null,
+  skill text not null,
+  country text not null,
+  place text not null,
+  years int not null default 1,
+  about text not null,
+  photo_url text,
+  social text,
+  created_at timestamptz not null default now(),
+  unique (user_id)
+);
+alter table public.profiles enable row level security;
+create policy "Anyone can read profiles" on public.profiles for select to anon, authenticated using (true);
+create policy "Users insert their own profile" on public.profiles for insert to authenticated with check (auth.uid() = user_id);
+create policy "Users update their own profile" on public.profiles for update to authenticated using (auth.uid() = user_id);`;
+
+    const $ = (id) => document.getElementById(id);
+    let client = null;
+    let mode = "in";
+    let photoData = "";
+    let user = null;
+
+    $("sql").textContent = SQL;
+    SKILLS.forEach((skill) => {
+      const option = document.createElement("option");
+      option.value = skill;
+      $("skills").appendChild(option);
+    });
+    for (const select of [$("country"), $("country-filter")]) {
+      COUNTRIES.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        select.appendChild(option);
+      });
+    }
+
+    function say(message) {
+      const node = $("status");
+      node.hidden = !message;
+      node.textContent = message || "";
+    }
+    function esc(value) {
+      return String(value ?? "")
+        .replace(/&/g, "\u0026amp;")
+        .replace(/</g, "\u0026lt;")
+        .replace(/>/g, "\u0026gt;")
+        .replace(/"/g, "\u0026quot;")
+        .replace(/'/g, "\u0026#39;");
+    }
+    function keys() {
+      return {
+        url: localStorage.getItem("tf_sb_url") || "",
+        key: localStorage.getItem("tf_sb_key") || "",
+      };
+    }
+    function connect() {
+      const saved = keys();
+      $("sb-url").value = saved.url;
+      $("sb-key").value = saved.key;
+      if (!saved.url || !saved.key || !window.supabase) {
+        client = null;
+        say(window.supabase ? "Add the Supabase URL and publishable key." : "The Supabase library did not load. Check the network and refresh.");
+        return;
+      }
+      client = window.supabase.createClient(saved.url, saved.key);
+      say("Connected to Supabase.");
+      client.auth.getSession().then(({ data }) => setUser(data.session?.user || null));
+      client.auth.onAuthStateChange((_event, session) => setUser(session?.user || null));
+      search();
+    }
+    function setUser(next) {
+      user = next;
+      $("sign-out").hidden = !user;
+      $("auth-card").hidden = Boolean(user);
+      $("profile-form").hidden = !user;
+      if (user) loadMine();
+    }
+    function setMode(next) {
+      mode = next;
+      $("tab-in").className = next === "in" ? "" : "secondary";
+      $("tab-up").className = next === "up" ? "" : "secondary";
+      $("auth-submit").textContent = next === "in" ? "Sign in" : "Create account";
+      $("password").autocomplete = next === "in" ? "current-password" : "new-password";
+    }
+
+    async function search() {
+      const box = $("results");
+      if (!client) {
+        box.innerHTML = "<p class='muted'>Connect Supabase to search.</p>";
+        return;
+      }
+      const skill = $("q").value.trim();
+      const country = $("country-filter").value;
+      let query = client.from("profiles").select("display_name,skill,country,place,years,about,photo_url,social").order("created_at", { ascending: false }).limit(40);
+      if (skill) query = query.ilike("skill", "%" + skill.replace(/[%_]/g, "") + "%");
+      if (country) query = query.eq("country", country);
+      const { data, error } = await query;
+      if (error) {
+        box.innerHTML = "<p class='note'>" + esc(error.message) + ". If the table is missing, run the SQL below.</p>";
+        return;
+      }
+      if (!data || !data.length) {
+        box.innerHTML = "<p class='muted'>No one has listed that skill yet.</p>";
+        return;
+      }
+      box.innerHTML = data.map((person) => {
+        const social = /^https:\/\//i.test(person.social || "") ? person.social : "";
+        return "<article class='person'><img alt='Photo of the work' src='" + esc(person.photo_url || "") + "' /><div><p class='skill'>" + esc(person.skill) + "</p><h3 style='margin:4px 0'>" + esc(person.display_name) + "</h3><p class='muted'>" + esc(person.years) + " years · " + esc(person.place) + ", " + esc(person.country) + "</p><p style='margin-top:8px'>" + esc(person.about) + "</p>" + (social ? "<p style='margin-top:8px'><a href='" + esc(social) + "'>Open social page</a></p>" : "") + "</div></article>";
+      }).join("");
+    }
+
+    async function loadMine() {
+      const { data } = await client.from("profiles").select("*").eq("user_id", user.id).maybeSingle();
+      if (!data) return;
+      $("display-name").value = data.display_name || "";
+      $("skill").value = data.skill || "";
+      $("country").value = data.country || COUNTRIES[0];
+      $("place").value = data.place || "";
+      $("years").value = data.years || 1;
+      $("about").value = data.about || "";
+      $("social").value = data.social || "";
+      if (data.photo_url) {
+        photoData = data.photo_url;
+        $("preview").hidden = false;
+        $("preview").src = data.photo_url;
+      }
+    }
+
+    function compress(file) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => {
+          const scale = Math.min(1, 1280 / Math.max(image.width, image.height));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.round(image.width * scale));
+          canvas.height = Math.max(1, Math.round(image.height * scale));
+          canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+          resolve(canvas.toDataURL("image/jpeg", 0.82));
+        };
+        image.onerror = () => reject(new Error("Use a JPG, PNG, or WEBP photo of the work."));
+        image.src = URL.createObjectURL(file);
+      });
+    }
+
+    $("save-keys").onclick = () => {
+      const url = $("sb-url").value.trim().replace(/\/$/, "");
+      const key = $("sb-key").value.trim();
+      if (!/^https:\/\/.+\.supabase\.co$/i.test(url)) {
+        say("The URL should look like https://xxxx.supabase.co");
+        return;
+      }
+      if (key.length < 20) {
+        say("Paste the publishable key from Supabase, Project Settings, API.");
+        return;
+      }
+      localStorage.setItem("tf_sb_url", url);
+      localStorage.setItem("tf_sb_key", key);
+      connect();
+    };
+    $("tab-in").onclick = () => setMode("in");
+    $("tab-up").onclick = () => setMode("up");
+    $("auth-form").onsubmit = async (event) => {
+      event.preventDefault();
+      if (!client) return say("Connect Supabase first.");
+      const email = $("email").value.trim();
+      const password = $("password").value;
+      const result = mode === "up"
+        ? await client.auth.signUp({ email, password })
+        : await client.auth.signInWithPassword({ email, password });
+      if (result.error) return say(result.error.message);
+      if (mode === "up" && !result.data.session) say("Account created. Confirm the email, then sign in.");
+      else say(mode === "up" ? "Account created." : "Signed in.");
+    };
+    $("sign-out").onclick = async () => {
+      if (client) await client.auth.signOut();
+      say("Signed out.");
+    };
+    $("search-form").onsubmit = (event) => {
+      event.preventDefault();
+      search();
+    };
+    $("photo").onchange = async (event) => {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      try {
+        photoData = await compress(file);
+        $("preview").hidden = false;
+        $("preview").src = photoData;
+        say("");
+      } catch (error) {
+        say(error.message);
+      }
+    };
+    $("profile-form").onsubmit = async (event) => {
+      event.preventDefault();
+      if (!client || !user) return say("Sign in first.");
+      if (!$("adult").checked) return say("Confirm that you are 18 or older.");
+      if (!photoData) return say("Add a real photo of your best work.");
+      const row = {
+        user_id: user.id,
+        display_name: $("display-name").value.trim(),
+        skill: $("skill").value.trim(),
+        country: $("country").value,
+        place: $("place").value.trim(),
+        years: Number($("years").value) || 0,
+        about: $("about").value.trim(),
+        photo_url: photoData,
+        social: $("social").value.trim(),
+      };
+      if (row.social && !/^https:\/\//i.test(row.social)) return say("A social page must start with https://");
+      const { error } = await client.from("profiles").upsert(row, { onConflict: "user_id" });
+      if (error) return say(error.message);
+      say("Profile published.");
+      search();
+    };
+    connect();
+  </script>
+</body>
+</html>
