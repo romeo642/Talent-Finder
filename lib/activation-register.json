@@ -1,0 +1,215 @@
+{
+  "auditedOn": "2026-11-06",
+  "rows": [
+    {
+      "id": "welcome",
+      "feature": "Welcome, country and language",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "GET / and /countries returned 200 on 2026-11-04. No language picker and no saved country.",
+      "provenOn": "",
+      "notes": "English is hard-coded in the screens. French exists only in the privacy text. Country is chosen by the visitor, not detected."
+    },
+    {
+      "id": "signup",
+      "feature": "Sign up and sign in",
+      "owner": "App",
+      "status": "Built",
+      "flag": "emailAndPasswordEnabled",
+      "test": "GET /login returned 200. Email, Google and X buttons are in the form. Not proven with a new account.",
+      "provenOn": "",
+      "notes": "Sign up is visible in the header. One-time codes by SMS or email do not exist."
+    },
+    {
+      "id": "age",
+      "feature": "Age check before anything is saved",
+      "owner": "App",
+      "status": "Built",
+      "flag": "MIN_AGE=18",
+      "test": "The list screen asks the age question and the server stores age_checks before a draft or a publish.",
+      "provenOn": "2026-11-10",
+      "notes": "A listing is not saved unless the signed-in person confirmed they are 18 or older."
+    },
+    {
+      "id": "otp",
+      "feature": "One-time codes by SMS and email",
+      "owner": "You",
+      "status": "Blocked",
+      "flag": "off",
+      "test": "No SMS or email provider is configured.",
+      "provenOn": "",
+      "notes": "Needs a sender account. Nothing can be proven until then."
+    },
+    {
+      "id": "consent",
+      "feature": "Consent pop-up before a profile is public",
+      "owner": "App",
+      "status": "Built",
+      "flag": "CONSENT_VERSION=2",
+      "test": "Code saves a consent row and search hides drafts. Not clicked through on a phone.",
+      "provenOn": "",
+      "notes": "Boxes start unticked. Withdrawal is not proven."
+    },
+    {
+      "id": "profile",
+      "feature": "Create a talent profile",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "GET /list returned 200. One skill, place, photos and a document field exist.",
+      "provenOn": "",
+      "notes": "No second skill, price range, availability or draft-after-every-step. Public does not require 3 photos."
+    },
+    {
+      "id": "photos",
+      "feature": "Photo upload",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "File picker, compression to 2560px and database storage exist. No phone camera, HEIC, drag, paste or resume test.",
+      "provenOn": "",
+      "notes": "Server does not enforce 3 to 12 photos. Identity-card names are refused. The picture itself is not checked for an ID card."
+    },
+    {
+      "id": "voice",
+      "feature": "Voice note and safe links",
+      "owner": "App",
+      "status": "Off",
+      "flag": "off",
+      "test": "No voice recorder in the app.",
+      "provenOn": "",
+      "notes": "Social links are plain links. They are not labelled as the talent's own pages."
+    },
+    {
+      "id": "search",
+      "feature": "Search and browse",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "GET /find returned 200 and rendered listing cards.",
+      "provenOn": "",
+      "notes": "No timed 4G test. Empty and error states exist in code, not proven."
+    },
+    {
+      "id": "country-lock",
+      "feature": "Same-country rule",
+      "owner": "App",
+      "status": "Built",
+      "flag": "tf-home-country",
+      "test": "Search and the home list use the country the visitor opened. A profile from another country shows only the skill and country name.",
+      "provenOn": "2026-11-10",
+      "notes": "Opening a country page saves it on this device. There is no IP detection."
+    },
+    {
+      "id": "boards",
+      "feature": "Most opened boards",
+      "owner": "App",
+      "status": "Built",
+      "flag": "on_boards",
+      "test": "Country boards sort by the views column. Opt-out is a consent box. Bots and self-clicks are not filtered.",
+      "provenOn": "",
+      "notes": "There is no separate Most contacted board."
+    },
+    {
+      "id": "match",
+      "feature": "Smart match wizard",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "GET /match lists real published people for a chosen country and skill. Empty skills say no one is listed.",
+      "provenOn": "2026-11-10",
+      "notes": "No invented score. It is a filtered search."
+    },
+    {
+      "id": "contact",
+      "feature": "Contact request, details hidden until Accept",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "Public rows no longer include phone or email. A signed-in person sends a request. The talent accepts from Requests.",
+      "provenOn": "2026-11-10",
+      "notes": "Social links stay public. Email and phone appear only after Accept. Eight requests a day."
+    },
+    {
+      "id": "chat",
+      "feature": "Private chat and translation",
+      "owner": "You",
+      "status": "Built",
+      "flag": "messages table",
+      "test": "Accepted requests can exchange short messages on /inbox. No translation provider is connected.",
+      "provenOn": "2026-11-10",
+      "notes": "Chat is stored in the app. Translation stays off until a translation key exists."
+    },
+    {
+      "id": "reviews",
+      "feature": "Ratings, reviews and vouches",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "Job-confirm and vouch tables exist. A neighbour phone code and one-review rule are not proven.",
+      "provenOn": "",
+      "notes": "Not the full review flow in section 3."
+    },
+    {
+      "id": "badge",
+      "feature": "Work checked badge, reports and appeals",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "Report button and review queue exist. Duplicate-image detection across countries is not proven.",
+      "provenOn": "",
+      "notes": "The badge must never say verified person. Copy currently says the work was checked."
+    },
+    {
+      "id": "plans",
+      "feature": "Plans, trial and payments",
+      "owner": "You",
+      "status": "Blocked",
+      "flag": "paystack on, flutterwave off",
+      "test": "No PAYSTACK_SECRET_KEY in this environment. Webhook route exists at /api/paystack/webhook.",
+      "provenOn": "",
+      "notes": "Prices are in config and the admin screen. A real payment cannot be proven. Wallet ledger is on for staff."
+    },
+    {
+      "id": "dashboards",
+      "feature": "Talent, seeker and admin dashboards",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "GET /card and /admin returned 200. Numbers were not checked against the database.",
+      "provenOn": "",
+      "notes": "No seeker dashboard. No two-step admin sign-in. Wallet, price, verify and remove actions are not locked to a staff role."
+    },
+    {
+      "id": "privacy",
+      "feature": "Edit, hide, download and delete",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "Buttons exist on My ID. Deletion is not proven against a live row.",
+      "provenOn": "",
+      "notes": "Privacy page is published. A lawyer still has to approve the text."
+    },
+    {
+      "id": "pwa",
+      "feature": "Installable PWA and offline shell",
+      "owner": "App",
+      "status": "Built",
+      "flag": "none",
+      "test": "GET /sw.js returned 200. Manifest at /__grok/manifest.webmanifest is named Grok App, not Talent Finder.",
+      "provenOn": "",
+      "notes": "High. Install would use the wrong name and icon until the manifest identity is set. Offline only caches the home page."
+    },
+    {
+      "id": "speed",
+      "feature": "Speed and accessibility score",
+      "owner": "App",
+      "status": "Off",
+      "flag": "off",
+      "test": "Lighthouse was not run. No 4G phone was available.",
+      "provenOn": "",
+      "notes": "Do not claim 90 until a run on a mid-range phone."
+    }
+  ]
+}
