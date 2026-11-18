@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-bg: #e5f4f5;
+  --color-ink: #0c2340;
+  --color-paper: #f8fcfc;
+  --color-muted: #3e5c6c;
+  --color-faint: #6d8794;
+  --color-line: #c5e2e4;
+  --color-line-strong: #7ec4c8;
+  --color-accent: #0c7f86;
+  --color-accent-fg: #f4fffe;
+  --color-slogan: #e85d04;
+  --color-danger: #8c2f2f;
+  --color-danger-bg: #f8eceb;
+  --color-ok: #1e4d3a;
+  --color-ok-bg: #e7f2ec;
+
+  --radius-control: 12px;
+  --radius-card: 28px;
+
+  --shadow-lift: 0 16px 40px rgb(20 23 26 / 0.08);
+
+  --text-hero: clamp(2.6rem, 1.4rem + 3.4vw, 4.6rem);
+  --text-hero--line-height: 1.02;
+  --text-title: clamp(1.75rem, 1.3rem + 1.2vw, 2.4rem);
+  --text-title--line-height: 1.15;
+
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .aspect-work {
+    aspect-ratio: 4 / 3;
+  }
+
+  .tap-stage {
+    background-color: #e5f4f5;
+    background-image:
+      radial-gradient(circle at 92% 0%, rgb(232 93 4 / 0.16), transparent 26%),
+      radial-gradient(circle at 8% -10%, rgb(12 127 134 / 0.28), transparent 34%),
+      radial-gradient(circle at 78% 108%, rgb(12 35 64 / 0.14), transparent 40%),
+      linear-gradient(165deg, #f7fcfc 0%, #d7eef0 46%, #c5e6ea 100%);
+    background-attachment: fixed;
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* A line with a diamond cut out of the middle. The line is the element;
+     the diamond is ::before, so no extra nodes are needed. */
+  .cut-rule {
+    position: relative;
+    height: 1px;
+    margin-top: 4rem;
+    background: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+
+  .cut-rule::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-ink);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  /* Corner brackets drawn on both ends of a frame. */
+  .bracket {
+    position: relative;
+  }
+
+  .bracket::before,
+  .bracket::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 1.35rem;
+    height: 1.35rem;
+    pointer-events: none;
+    border-color: var(--color-ink);
+    border-style: solid;
+  }
+
+  .bracket::before {
+    top: 0.75rem;
+    left: 0.75rem;
+    border-width: 2px 0 0 2px;
+  }
+
+  .bracket::after {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* Giant faded word from data-mark, painted behind the card text. */
+  .watermark {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .watermark::after {
+    content: attr(data-mark);
+    position: absolute;
+    top: -0.8rem;
+    right: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 4.25rem;
+    line-height: 1;
+    opacity: 0.16;
+    pointer-events: none;
+  }
+
+  /* A turned page corner. The triangle is two borders on ::before. */
+  .page-fold {
+    position: relative;
+  }
+
+  .page-fold::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 1.7rem 1.7rem 0;
+    border-style: solid;
+    border-color: transparent var(--color-bg) transparent transparent;
+    filter: drop-shadow(-1px 1px 0 var(--color-line-strong));
+  }
+
+  /* Numbered steps. The circle is ::before and reads a CSS counter. */
+  .steps {
+    counter-reset: tap;
+  }
+
+  .steps > li {
+    counter-increment: tap;
+    position: relative;
+  }
+
+  .steps > li::before {
+    content: counter(tap, tap-pad);
+    position: absolute;
+    top: -1rem;
+    left: 1.25rem;
+    display: flex;
+    width: 2.25rem;
+    height: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-ink);
+    border-radius: 999px;
+    background: var(--color-bg);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    line-height: 1;
+  }
+
+  /* Pad every counter to two digits: 1 becomes 01. suffix is empty so
+     the number does not pick up the usual list period. */
+  .panels {
+    counter-reset: panel;
+  }
+
+  .panels > li {
+    counter-increment: panel;
+  }
+
+  .panels > li::before {
+    content: counter(panel, tap-pad);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    opacity: 0.7;
+  }
+
+  .fees {
+    counter-reset: fee;
+  }
+
+  .fees > li {
+    counter-increment: fee;
+  }
+
+  /* A child can read the counter its parent incremented. */
+  .fee-index::before {
+    content: counter(fee, tap-pad) "  ";
+    opacity: 0.55;
+  }
+}
+
+@counter-style tap-pad {
+  system: numeric;
+  symbols: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9";
+  pad: 2 "0";
+  suffix: "";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
