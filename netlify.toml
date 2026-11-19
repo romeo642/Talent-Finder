@@ -1,5 +1,6 @@
 [build]
-  publish = "site"
+command = "vite build"
+publish = "dist/client"
 
 [[headers]]
   for = "/*"
