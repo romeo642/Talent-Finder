@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <title>Talent Finder | Find Skilled Local Talent Near You</title>
+  <meta name="description" content="Find a plumber, electrician, carpenter or tutor near you in Ghana and Zambia. Open a Talent ID, check the work, and hire a skilled hand. Start free today." />
+  <link rel="canonical" href="https://talentfinder2026.netlify.app/" />
+  <meta name="theme-color" content="#0c7f86" />
+  <link rel="icon" href="logo.jpg" />
+  <link rel="apple-touch-icon" href="logo.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Talent Finder" />
+  <meta property="og:title" content="Talent Finder | Find Skilled Local Talent Near You" />
+  <meta property="og:description" content="Find a plumber, electrician, carpenter or tutor near you. Open a Talent ID, check the work, and hire a skilled hand." />
+  <meta property="og:url" content="https://talentfinder2026.netlify.app/" />
+  <meta property="og:image" content="https://talentfinder2026.netlify.app/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Talent Finder | Find Skilled Local Talent Near You" />
+  <meta name="twitter:description" content="Find a plumber, electrician, carpenter or tutor near you. Open a Talent ID, check the work, and hire a skilled hand." />
+  <meta name="twitter:image" content="https://talentfinder2026.netlify.app/og.jpg" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Talent Finder",
+      "url": "https://talentfinder2026.netlify.app/",
+      "description": "A directory that helps a home, a factory, or a company find a skilled hand nearby.",
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://talentfinder2026.netlify.app/?skill={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Talent Finder",
+      "url": "https://talentfinder2026.netlify.app/",
+      "logo": "https://talentfinder2026.netlify.app/logo.jpg",
+      "areaServed": ["GH", "ZM"],
+      "description": "Talent Finder helps a home, a factory, or a company find skilled local talent."
+    }
+  </script>
+  <style>
+    :root {
+      --ink: #142033;
+      --muted: #5c6570;
+      --paper: #f4efe6;
+      --card: #fffdf8;
+      --line: #e3d9c8;
+      --teal: #0c7f86;
+      --teal-ink: #f4fffe;
+      --orange: #e36a2c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(227, 106, 44, 0.16), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(12, 127, 134, 0.18), transparent 32%),
+        var(--paper);
+      color: var(--ink);
+      font: 16px/1.5 Georgia, "Iowan Old Style", serif;
+    }
+    header, main { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 28px 0 8px; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .mark { width: 72px; height: 72px; border-radius: 16px; object-fit: cover; }
+    h1 { font-size: 28px; line-height: 1; margin: 0; font-weight: 500; }
+    .slogan { margin: 4px 0 0; color: var(--teal); font-size: 14px; }
+    button, .ghost {
+      border: 0; border-radius: 999px; padding: 10px 16px; font: 600 14px/1.2 system-ui, sans-serif;
+      background: var(--teal); color: var(--teal-ink); cursor: pointer;
+    }
+    button.secondary, .ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+    main { display: grid; gap: 16px; padding-bottom: 48px; }
+    section, form.card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    }
+    h2 { margin: 0 0 8px; font-size: 26px; font-weight: 500; }
+    p { margin: 0; }
+    .muted { color: var(--muted); font-family: system-ui, sans-serif; font-size: 14px; }
+    .row { display: grid; gap: 10px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) {
+      .row.two { grid-template-columns: 1fr 1fr; }
+      .row.three { grid-template-columns: 1.2fr 1fr auto; align-items: end; }
+    }
+    label { display: grid; gap: 6px; font-family: system-ui, sans-serif; font-size: 13px; font-weight: 650; }
+    input, select, textarea {
+      width: 100%; border: 1px solid var(--line); background: #fff; color: var(--ink);
+      border-radius: 12px; padding: 12px; font: 16px/1.4 system-ui, sans-serif;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .note { background: #fff4e8; border-radius: 12px; padding: 10px 12px; font-family: system-ui, sans-serif; font-size: 14px; }
+    .grid { display: grid; gap: 12px; }
+    @media (min-width: 720px) { .grid.cards { grid-template-columns: 1fr 1fr; } }
+    article.person { overflow: hidden; padding: 0; }
+    article.person img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #ece4d6; display: block; }
+    article.person div { padding: 14px 16px 16px; }
+    .skill { color: var(--orange); font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    pre { white-space: pre-wrap; background: #142033; color: #f4efe6; border-radius: 12px; padding: 12px; font-size: 12px; overflow: auto; }
+    .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 500; }
+    .check input { width: auto; margin-top: 3px; }
+    .ad { background: #142033; color: #f4efe6; border: 0; }
+    .ad h2 { color: #f4efe6; font-size: 22px; }
+    .ad .kicker { color: #e36a2c; font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .ad p { margin-top: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chips span { border: 1px solid rgba(244, 239, 230, 0.35); border-radius: 999px; padding: 4px 10px; font-family: system-ui, sans-serif; font-size: 13px; }
+    .share { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .ad .share a, .ad .share button { color: #f4efe6; border-color: rgba(244, 239, 230, 0.55); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img class="mark" src="logo.jpg" alt="Talent Finder logo" />
+      <div>
+        <h1>Talent Finder</h1>
+        <p class="slogan">The right hands, one tap away</p>
+      </div>
+    </div>
+    <button id="sign-out" class="secondary" hidden type="button">Sign out</button>
+  </header>
+  <main>
+    <section class="ad" aria-label="Advertisement">
+      <p class="kicker">Advertisement</p>
+      <h2>Find a skilled hand near you</h2>
+      <p>Talent Finder is how a home, a factory, or a company finds a skilled hand.</p>
+      <p>Search a plumber, electrician, carpenter, welder, painter, gardener, tailor, cleaner, cook, or home tutor in your own town.</p>
+      <p>Open the Talent ID, look at the work, and hire someone close by without leaving your area.</p>
+      <div class="chips">
+        <span>Plumber</span><span>Electrician</span><span>Carpenter</span><span>Welder</span><span>Painter</span>
+        <span>Gardener</span><span>Tailor</span><span>Cleaner</span><span>Cook</span><span>Home tutor</span>
+      </div>
+      <div class="share">
+        <a id="share-wa" class="ghost" href="#">Share on WhatsApp</a>
+        <a id="share-fb" class="ghost" href="#">Share on Facebook</a>
+        <a id="share-x" class="ghost" href="#">Share on X</a>
+        <a id="share-li" class="ghost" href="#">Share on LinkedIn</a>
+        <button id="share-copy" class="secondary" type="button">Copy link</button>
+      </div>
+    </section>
+
+    <section id="about-finder">
+      <h2>What Talent Finder is</h2>
+      <p>Talent Finder is a public directory of skilled hands in Ghana and Zambia. A home, a factory, or a company searches a trade, opens a Talent ID, and looks at photos of finished work.</p>
+      <h2 style="margin-top:16px">How it works</h2>
+      <p>A skilled person posts a name, a skill, a town, and photos of their own work. They receive a Talent ID. A hirer searches that skill, agrees to check the person, and only then sees the messaging IDs the talent chose to show.</p>
+      <h2 style="margin-top:16px">Who it is for</h2>
+      <p>It is for households, factories, and companies that need a plumber, electrician, carpenter, welder, painter, gardener, tailor, cleaner, cook, or home tutor nearby. It is also for the person who does that work and wants to be found.</p>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <h3 style="margin:14px 0 4px;font-weight:500">Does Talent Finder check the person?</h3>
+      <p>No. It shows the work the person posted. You must check the skill yourself before you hire.</p>
+      <h3 style="margin:14px 0 4px;font-weight:500">Which countries are listed?</h3>
+      <p>Ghana and Zambia.</p>
+      <h3 style="margin:14px 0 4px;font-weight:500">What is public on a Talent ID?</h3>
+      <p>The name, skill, town, years, a description, photos of the work, and the messaging IDs the person turns on. An email address, a phone number, and an identity document are not shown.</p>
+    </section>
+
+    <section id="connect">
+      <h2>Connect Supabase</h2>
+      <p class="muted">Paste your project URL and publishable key. They stay in this browser. The key must be the publishable (anon) key, never the secret key.</p>
+      <div class="row two" style="margin-top:12px">
+        <label>Project URL
+          <input id="sb-url" placeholder="https://xxxx.supabase.co" autocomplete="off" />
+        </label>
+        <label>Publishable key
+          <input id="sb-key" placeholder="sb_publishable_... or anon key" autocomplete="off" />
+        </label>
+      </div>
+      <div class="actions">
+        <button id="save-keys" type="button">Save and connect</button>
+      </div>
+      <p id="status" class="note" style="margin-top:12px" hidden></p>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy notice</h2>
+      <p class="muted">Read this before you create an account.</p>
+      <div class="muted" style="margin-top:10px">
+        <p>Talent Finder is a directory of work for Ghana and Zambia. We collect your email and password so you can sign in, and the profile you choose to publish: name, skill, country, town, years, a description, a photo of finished work, and an optional social link.</p>
+        <p style="margin-top:8px">We use this to show your work to people in Ghana and Zambia and to let you delete it. We calculate your age on this page and then discard the date. We do not save a date of birth.</p>
+        <p style="margin-top:8px">Supabase stores the account and the profile. The profile and work photo are public. Your email and password are not shown on the profile.</p>
+        <p style="margin-top:8px">To delete it, sign in and press Delete my account. That removes the talent post, the photos, the job records, and, after the SQL below has been run, the login as well.</p>
+        <p style="margin-top:8px">The subscription is GHC 20 a year in Ghana and ZMW 35 a year in Zambia. Those are the same value. The app does not check a licence and does not list health, vet, or childcare work. A photo of a child, a patient, an identity card, or the inside of someone else's home is not allowed. Anyone signed in can report a profile, and a moderator can hide it.</p>
+      </div>
+    </section>
+
+    <section id="auth-card">
+      <div class="tabs">
+        <button type="button" id="tab-in">Sign in</button>
+        <button type="button" id="tab-up" class="secondary">Sign up</button>
+      </div>
+      <form id="auth-form" class="row">
+        <label>Email
+          <input id="email" type="email" required autocomplete="username" />
+        </label>
+        <label>Password
+          <input id="password" type="password" required minlength="6" autocomplete="current-password" />
+        </label>
+        <div id="dob-fields" hidden>
+          <p class="muted">Date of birth. Type the day, month, and year, or pick the date on the calendar.</p>
+          <div class="dob" style="margin-top:10px">
+            <label>Day
+              <input id="dob-day" inputmode="numeric" maxlength="2" placeholder="DD" autocomplete="bday-day" />
+            </label>
+            <label>Month
+              <input id="dob-month" inputmode="numeric" maxlength="2" placeholder="MM" autocomplete="bday-month" />
+            </label>
+            <label>Year
+              <input id="dob-year" inputmode="numeric" maxlength="4" placeholder="YYYY" autocomplete="bday-year" />
+            </label>
+          </div>
+          <label style="margin-top:10px">Calendar
+            <input id="dob-cal" type="date" />
+          </label>
+          <p id="fee-auth" class="muted" style="margin-top:10px">The subscription is GHC 20 a year in Ghana, or ZMW 35 a year in Zambia.</p>
+          <label class="check" style="margin-top:12px">
+            <input id="privacy-ok" type="checkbox" />
+            <span>I have read the privacy notice.</span>
+          </label>
+        </div>
+        <p id="ineligible" class="note" hidden>This date of birth is under 18. Sign up is closed, and this person cannot create an account.</p>
+        <div class="actions">
+          <button id="auth-submit" type="submit">Sign in</button>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Search by skill</h2>
+      <div class="note" style="margin:12px 0">
+        <p>Before you hire, check the work, the place, and the person yourself. Talent Finder shows what the talent posted. It does not check a licence, and it does not confirm who they are.</p>
+        <label class="check" style="margin-top:10px">
+          <input id="diligence" type="checkbox" />
+          <span>I will do my own due diligence before I contact or hire anyone on this page.</span>
+        </label>
+      </div>
+      <form id="search-form" class="row three">
+        <label>Skill
+          <input id="q" placeholder="Plumber, gardener, welder" />
+        </label>
+        <label>Country
+          <select id="country-filter">
+            <option value="">Any country</option>
+          </select>
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      <div id="results" class="grid cards" style="margin-top:14px"></div>
+    </section>
+
+    <section id="report-box" hidden>
+      <h2>Report a profile</h2>
+      <p id="report-who" class="muted"></p>
+      <label style="margin-top:10px">Reason
+        <select id="report-reason">
+          <option>Photo shows a child</option>
+          <option>Photo shows a patient</option>
+          <option>Photo shows an identity card</option>
+          <option>Photo shows the inside of a home</option>
+          <option>This is not their work</option>
+          <option>Unsafe or abusive</option>
+        </select>
+      </label>
+      <div class="actions">
+        <button id="send-report" type="button">Send report</button>
+      </div>
+    </section>
+
+    <section id="message-box" hidden>
+      <h2>Message this Talent ID</h2>
+      <p id="message-who" class="muted"></p>
+      <label style="margin-top:10px">Note
+        <textarea id="message-body" maxlength="500" placeholder="The job, the place, and when you need them."></textarea>
+      </label>
+      <div class="actions">
+        <button id="send-message" type="button">Send message</button>
+      </div>
+    </section>
+
+    <section id="review-box" hidden>
+      <h2>Reviewer</h2>
+      <p class="muted">A reviewer can hide or restore a reported post. This role has no admin code and cannot read messages or change roles.</p>
+      <div id="review-list" class="grid" style="margin-top:12px"></div>
+    </section>
+
+    <section id="admin-box" hidden>
+      <h2>Admin</h2>
+      <div id="admin-2fa">
+        <p class="muted">This second code is for an admin only. A talent or a hirer is never asked for it.</p>
+        <img id="admin-qr" alt="Admin code setup" hidden style="width:180px;height:180px;background:#fff;border-radius:12px" />
+        <p id="admin-secret" class="muted" style="margin-top:8px"></p>
+        <div class="actions">
+          <button id="admin-enroll" type="button">Set up admin code</button>
+        </div>
+        <label style="margin-top:10px">6-digit code
+          <input id="admin-code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" />
+        </label>
+        <div class="actions">
+          <button id="admin-verify" type="button">Confirm code</button>
+        </div>
+      </div>
+      <div id="admin-tools" hidden>
+        <p id="admin-role-note" class="muted"></p>
+        <div class="row two" style="margin-top:12px">
+          <label>Account email
+            <input id="admin-email" type="email" placeholder="name@example.com" />
+          </label>
+          <label>Role
+            <select id="grant-role">
+              <option value="reviewer">Reviewer</option>
+            </select>
+          </label>
+        </div>
+        <div class="actions">
+          <button id="admin-grant" type="button">Grant role</button>
+        </div>
+        <div class="row two" style="margin-top:12px">
+          <label>Remove this email from staff
+            <input id="revoke-email" type="email" placeholder="name@example.com" />
+          </label>
+        </div>
+        <div class="actions">
+          <button id="admin-revoke" class="secondary" type="button">Remove role</button>
+        </div>
+        <h3 style="margin:16px 0 6px;font-weight:500">Reports</h3>
+        <div id="report-list" class="grid"></div>
+        <h3 style="margin:16px 0 6px;font-weight:500">Message IDs</h3>
+        <div id="admin-messages" class="grid"></div>
+      </div>
+    </section>
+
+    <form id="profile-form" class="card" hidden>
+      <h2>Your talent post</h2>
+      <p id="talent-id" class="note" hidden></p>
+      <div class="actions">
+        <button id="share-id" class="secondary" type="button">Share my Talent ID</button>
+      </div>
+      <p class="muted" style="margin-top:8px">Post photos of your own finished work. You can add more, remove any of them, edit this post, or delete the account. Do not post an identity card, a passport, a child, a patient, or the inside of someone else's home.</p>
+      <div class="row two" style="margin-top:12px">
+        <label>Name clients should see
+          <input id="display-name" required minlength="2" />
+        </label>
+        <label>Skill
+          <input id="skill" list="skills" required placeholder="Type a skill or pick one" />
+        </label>
+        <label>Country
+          <select id="country" required></select>
+        </label>
+        <label>Town or area
+          <input id="place" required placeholder="Osu, Accra or Kabwata, Lusaka" />
+        </label>
+        <label>Years of experience
+          <input id="years" type="number" min="0" max="60" value="3" required />
+        </label>
+      </div>
+      <h3 style="margin:16px 0 6px;font-weight:500">Messaging IDs</h3>
+      <p class="muted">Add the accounts you actually use. A hirer sees them only after agreeing to check you themselves. Leave any blank.</p>
+      <div class="row two" style="margin-top:10px">
+        <label>Facebook ID
+          <input id="msg-facebook" placeholder="your.page" maxlength="50" />
+        </label>
+        <label>Instagram ID
+          <input id="msg-instagram" placeholder="yourwork" maxlength="50" />
+        </label>
+        <label>TikTok ID
+          <input id="msg-tiktok" placeholder="yourwork" maxlength="50" />
+        </label>
+        <label>X ID
+          <input id="msg-x" placeholder="yourwork" maxlength="50" />
+        </label>
+      </div>
+      <label style="margin-top:10px">About the work
+        <textarea id="about" required minlength="40" placeholder="Describe a real job you finished. At least 40 characters."></textarea>
+      </label>
+      <h3 style="margin:16px 0 6px;font-weight:500">Photos and records of your own work</h3>
+      <div id="work-list" class="grid"></div>
+      <label style="margin-top:10px">Add a photo of your own work
+        <input id="photo" type="file" accept="image/jpeg,image/png,image/webp" />
+      </label>
+      <label style="margin-top:10px">Add a written record of a job you finished
+        <input id="work-title" placeholder="Replaced a kitchen tap in Osu" />
+      </label>
+      <div class="actions">
+        <button id="add-record" class="secondary" type="button">Add this record</button>
+      </div>
+      <p class="muted" style="margin-top:12px">An automatic check runs on the text and each photo before it is saved. The database repeats that check. The subscription is GHC 20 a year in Ghana and ZMW 35 a year in Zambia. Health, vet, and childcare skills are not listed.</p>
+      <label class="check" style="margin-top:12px">
+        <input id="photo-ok" type="checkbox" />
+        <span>These photos and records are of my own work. They do not show a child, a patient, an identity card, or the inside of someone else's home.</span>
+      </label>
+      <div class="actions">
+        <button type="submit">Save my talent post</button>
+        <button id="delete-profile" class="secondary" type="button">Delete my account</button>
+      </div>
+      <h3 style="margin:18px 0 6px;font-weight:500">Messages for your Talent ID</h3>
+      <div id="inbox" class="grid"></div>
+    </form>
+
+    <section>
+      <h2>Before you contact anyone</h2>
+      <p class="muted">A hirer must check the photos of the work and do their own due diligence before hiring. The talent post is not a guarantee. If something is not their work, use Report.</p>
+      <details style="margin-top:12px">
+        <summary class="muted">Run this once in the Supabase SQL editor</summary>
+        <pre id="sql"></pre>
+      </details>
+    </section>
+  </main>
+  <datalist id="skills"></datalist>
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

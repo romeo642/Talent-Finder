@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "TAP",
+      "hasCanvas": false,
+      "bodyTextLen": 1975,
+      "bodyTextHash": "a8d64f342d7fc552d50d84a39f71554997a2d061e314bf99d02ac2608c26858d",
+      "bodyTextPrefix": "TAP Find List My ID Skilled hands, with an ID you can check A wo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "TAP",
+      "hasCanvas": false,
+      "bodyTextLen": 2326,
+      "bodyTextHash": "37d712a28feac6377dbc1af02f7a1adc5877656c24d1827904ca71822d952dbe",
+      "bodyTextPrefix": "TAP Sign in Skilled hands, with an ID you can check A work ID fo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "TAP",
+      "hasCanvas": false,
+      "bodyTextLen": 2490,
+      "bodyTextHash": "c9d04c490c1a626407f2ae646ac3e79e9bef144afbaa4a872cb603d213272d15",
+      "bodyTextPrefix": "TAP Find List My ID Sign in Skilled hands, with an ID you can ch",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "TAP",
+      "hasCanvas": false,
+      "bodyTextLen": 2223,
+      "bodyTextHash": "28592b96f551f98f0f7f062583fcc09821448917fe6cbc7d572ec5c4c06eed59",
+      "bodyTextPrefix": "TAP Sign in Skilled hands, with an ID you can check A work ID fo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "desktop: body text changed (1861 -> 2490 chars, hash mismatch)",
+    "mobile: body text changed (1594 -> 2223 chars, hash mismatch)"
+  ]
+}

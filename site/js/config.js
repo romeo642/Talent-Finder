@@ -1,0 +1,116 @@
+/** One place for limits and copy so the screens do not each invent a number. */
+
+export const SUPABASE_URL = "";
+export const SUPABASE_KEY = "";
+
+export const COUNTRIES = ["Ghana", "Zambia"];
+
+export const SKILLS = [
+  "Home tutor", "Gardener", "Painter", "Plumber", "Electrician", "Carpenter", "Welder", "Tailor",
+  "Cleaner", "Laundry specialist", "Hairstylist", "Cook", "Driver", "Mason", "Tiler",
+  "Air conditioner repairer", "Fridge repairer", "Satellite installer", "Web designer",
+  "Graphic designer", "Software developer", "IT support", "Photographer", "Event attendant",
+  "Shoemaker", "Organist",
+];
+
+export const LIMITS = {
+  searchPage: 40,
+  inbox: 20,
+  adminList: 30,
+  maxPhotos: 4,
+  maxNotes: 8,
+  photoEdge: 800,
+  jpegQuality: 0.7,
+  minPhotoPx: 180,
+  minNote: 8,
+  minAge: 18,
+  minKeyLength: 20,
+  sharePhotos: 3,
+  shareNotes: 3,
+};
+
+export const STORAGE = {
+  url: "tf_sb_url",
+  key: "tf_sb_key",
+  ineligible: "tf_ineligible",
+  diligence: "tf_diligence",
+};
+
+export const BLOCKED_SKILL = /nurse|nanny|veterinar|\bvet\b|doctor|patient|midwife|childcare|babysit/i;
+
+export const MESSAGES = {
+  connectFirst: "Connect Supabase first.",
+  addKeys: "Add the Supabase URL and publishable key.",
+  libraryMissing: "The Supabase library did not load. Check the network and refresh.",
+  connected: "Connected to Supabase.",
+  badUrl: "The URL should look like https://xxxx.supabase.co",
+  badKey: "Paste the publishable key from Supabase, Project Settings, API.",
+  under18: "Sign up is closed. This date of birth is under 18, so this person cannot create an account.",
+  under18Closed: "Sign up is closed. A date of birth under 18 cannot create an account.",
+  privacyBox: "Read the privacy notice, then tick the box.",
+  badDob: "Type a real day, month, and year of birth.",
+  signedIn: "Signed in.",
+  signedOut: "Signed out.",
+  accountCreated: "Account created. The subscription is GHC 20 a year in Ghana, or ZMW 35 in Zambia. Confirm the email, then sign in.",
+  accountCreatedLive: "Account created. The subscription is GHC 20 a year in Ghana, or ZMW 35 in Zambia.",
+  diligenceSearch: "Tick the due diligence box before you search. You must check the person yourself.",
+  diligenceResults: "Tick the due diligence box to see talent posts. You must check the person yourself before you hire.",
+  connectToSearch: "Connect Supabase to search.",
+  noneListed: "No one has listed that skill yet.",
+  signInPhoto: "Sign in before you add a photo.",
+  photoCap: "You can keep up to 4 photos. Remove one first.",
+  photoAdded: "Photo added. It is of your own work only if you confirmed that below.",
+  signInFirst: "Sign in first.",
+  noteShort: "Describe the job in at least 8 characters.",
+  noteCap: "You can keep up to 8 job records. Remove one first.",
+  noteAdded: "Job record added.",
+  removed: "Removed.",
+  needPhoto: "Add at least one photo of your own work.",
+  photoConfirm: "Confirm that the photos and records are of your own work, with no child, patient, identity card, or the inside of a home.",
+  blockedSkill: "Health, vet, and childcare listings are not allowed.",
+  badHandle: "A messaging ID can use letters, numbers, dots, and underscores only.",
+  badCountry: "Choose Ghana or Zambia.",
+  signInReport: "Sign in to report a profile.",
+  signInMessage: "Sign in to send a message.",
+  diligenceMessage: "Confirm due diligence before you message anyone.",
+  noSelfMessage: "You cannot message your own Talent ID.",
+  shortNote: "Write a short note.",
+  noSelfReport: "You cannot report your own profile.",
+  reportSent: "Report sent. An admin can hide the profile after confirming the admin code.",
+  hidden: "Profile hidden.",
+  restored: "Profile restored.",
+  messageRemoved: "Message removed.",
+  setupCodeFirst: "Set up the admin code first.",
+  sixDigits: "Enter the 6-digit admin code.",
+  codeConfirmed: "Admin code confirmed.",
+  needEmail: "Enter the email of an account that already exists.",
+  needRevokeEmail: "Enter the email to remove.",
+  reviewerGranted: "Reviewer granted. They are not asked for an admin code.",
+  roleGranted: "Role granted. They must set up an admin code on the next sign-in.",
+  roleRemoved: "Role removed.",
+  deleteConfirm: "Delete this talent post, its photos and records, and close the account?",
+  deletedPartial: "Talent post deleted. Run the SQL once so the login can be removed too.",
+  deleted: "Your talent post and account have been deleted.",
+  linkCopied: "Link copied. Paste it in WhatsApp, Facebook, X, or LinkedIn.",
+  signInShare: "Sign in to share your Talent ID.",
+  idCopied: "Talent ID copied. It does not include an email or a phone number.",
+  cardCopied: "Link copied.",
+  sqlMissing: "The SQL file did not load. Open schema.sql in the site folder and paste it into the Supabase SQL editor.",
+  fileNameBlocked: "That file name is not allowed. Upload a photo of the finished work.",
+  tooSmall: "That picture is too small to be a photo of finished work.",
+  looksLikeId: "That picture looks like an identity card or a document. Upload a photo of the finished work.",
+  badImage: "Use a JPG, PNG, or WEBP photo of the work.",
+  textBlocked: "Automatic check: health, vet, childcare, identity documents, and sexual content are not allowed.",
+  emailBlocked: "Automatic check: do not put an email address on the public profile.",
+  phoneBlocked: "Automatic check: do not put a phone number on the public profile.",
+  mfaOff: " Turn on MFA in the Supabase Authentication settings if it is switched off.",
+  sqlHint: " Run the SQL below if the work table is missing.",
+  tableHint: ". If the table is missing, run the SQL below.",
+  enterCode: "Enter the 6-digit code from your authenticator app.",
+  setupOnce: "Set up the admin code once. Talents and reviewers are not asked for it.",
+  ownerNote: "You are the owner. You can grant a reviewer, an admin, or another owner.",
+  adminNote: "You are an admin. You can grant or remove a reviewer. Only the owner can grant an admin.",
+  secretPrefix: "If you cannot scan the picture, type this secret into an authenticator app: ",
+};
+
+export const PITCH = "Talent Finder finds a plumber, electrician, carpenter, welder, painter, gardener, tailor, cleaner, cook, or home tutor near you. ";
