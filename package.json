@@ -20,7 +20,7 @@
     "lint": "eslint .",
     "format": "prettier --write ."
   },
-  "dependencies": {"@netlify/vite-plugin-tanstack-start": "latest",
+  "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
     "@hookform/resolvers": "^5.7.0",
     "@radix-ui/react-accordion": "^1.2.12",
