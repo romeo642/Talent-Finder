@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <title>Talent Finder | Find Skilled Local Talent Near You</title>
+  <meta name="description" content="Find a plumber, electrician, carpenter or tutor near you in Ghana and Zambia. Open a Talent ID, check the work, and hire a skilled hand. Start free." />
+  <link rel="canonical" href="https://talent-finder.netlify.app/" />
+  <meta name="theme-color" content="#0c7f86" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Talent Finder" />
+  <meta property="og:title" content="Talent Finder | Find Skilled Local Talent Near You" />
+  <meta property="og:description" content="Find a plumber, electrician, carpenter or tutor near you. Open a Talent ID, check the work, and hire a skilled hand." />
+  <meta property="og:url" content="https://talent-finder.netlify.app/" />
+  <meta property="og:image" content="https://talent-finder.netlify.app/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Talent Finder | Find Skilled Local Talent Near You" />
+  <meta name="twitter:description" content="Find a plumber, electrician, carpenter or tutor near you. Open a Talent ID, check the work, and hire a skilled hand." />
+  <meta name="twitter:image" content="https://talent-finder.netlify.app/og.jpg" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Talent Finder",
+      "url": "https://talent-finder.netlify.app/",
+      "description": "A directory that helps a home, a factory, or a company find a skilled hand nearby.",
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://talent-finder.netlify.app/?skill={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Talent Finder",
+      "url": "https://talent-finder.netlify.app/",
+      "logo": "https://talent-finder.netlify.app/icon-192.png",
+      "areaServed": ["GH", "ZM"],
+      "description": "Talent Finder helps a home, a factory, or a company find skilled local talent."
+    }
+  </script>
+  <style>
+    :root {
+      --ink: #142033;
+      --muted: #5c6570;
+      --paper: #f4efe6;
+      --card: #fffdf8;
+      --line: #e3d9c8;
+      --teal: #0c7f86;
+      --teal-ink: #f4fffe;
+      --orange: #e36a2c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(227, 106, 44, 0.16), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(12, 127, 134, 0.18), transparent 32%),
+        var(--paper);
+      color: var(--ink);
+      font: 16px/1.5 Georgia, "Iowan Old Style", serif;
+    }
+    header, main { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 28px 0 8px; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .mark { width: 54px; height: 54px; }
+    h1 { font-size: 28px; line-height: 1; margin: 0; font-weight: 500; }
+    .slogan { margin: 4px 0 0; color: var(--teal); font-size: 14px; }
+    button, .ghost {
+      border: 0; border-radius: 999px; padding: 10px 16px; font: 600 14px/1.2 system-ui, sans-serif;
+      background: var(--teal); color: var(--teal-ink); cursor: pointer;
+    }
+    button.secondary, .ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
+    main { display: grid; gap: 16px; padding-bottom: 48px; }
+    section, form.card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    }
+    h2 { margin: 0 0 8px; font-size: 26px; font-weight: 500; }
+    p { margin: 0; }
+    .muted { color: var(--muted); font-family: system-ui, sans-serif; font-size: 14px; }
+    .row { display: grid; gap: 10px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) {
+      .row.two { grid-template-columns: 1fr 1fr; }
+      .row.three { grid-template-columns: 1.2fr 1fr auto; align-items: end; }
+    }
+    label { display: grid; gap: 6px; font-family: system-ui, sans-serif; font-size: 13px; font-weight: 650; }
+    input, select, textarea {
+      width: 100%; border: 1px solid var(--line); background: #fff; color: var(--ink);
+      border-radius: 12px; padding: 12px; font: 16px/1.4 system-ui, sans-serif;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .note { background: #fff4e8; border-radius: 12px; padding: 10px 12px; font-family: system-ui, sans-serif; font-size: 14px; }
+    .grid { display: grid; gap: 12px; }
+    @media (min-width: 720px) { .grid.cards { grid-template-columns: 1fr 1fr; } }
+    article.person { overflow: hidden; padding: 0; }
+    article.person img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #ece4d6; display: block; }
+    article.person div { padding: 14px 16px 16px; }
+    .skill { color: var(--orange); font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    pre { white-space: pre-wrap; background: #142033; color: #f4efe6; border-radius: 12px; padding: 12px; font-size: 12px; overflow: auto; }
+    .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 500; }
+    .check input { width: auto; margin-top: 3px; }
+    .ad { background: #142033; color: #f4efe6; border: 0; }
+    .ad h2 { color: #f4efe6; font-size: 22px; }
+    .ad .kicker { color: #e36a2c; font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .ad p { margin-top: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chips span { border: 1px solid rgba(244, 239, 230, 0.35); border-radius: 999px; padding: 4px 10px; font-family: system-ui, sans-serif; font-size: 13px; }
+    .share { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .ad .share a, .ad .share button { color: #f4efe6; border-color: rgba(244, 239, 230, 0.55); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#142033"/>
+        <circle cx="28" cy="28" r="12" fill="none" stroke="#f4efe6" stroke-width="3"/>
+        <path d="M37 37 L48 48" stroke="#e36a2c" stroke-width="4" stroke-linecap="round"/>
+        <path d="M22 40 h20 a8 8 0 0 1 8 8 v4 H14 v-4 a8 8 0 0 1 8-8z" fill="#0c7f86"/>
+      </svg>
+      <div>
+        <h1>Talent Finder</h1>
+        <p class="slogan">The right hands, one tap away</p>
+      </div>
+    </div>
+    <button id="sign-out" class="secondary" hidden type="button">Sign out</button>
+  </header>
+  <main>
+    <section class="ad" aria-label="Advertisement">
+      <p class="kicker">Advertisement</p>
+      <h2>Find a skilled hand near you</h2>
+      <p>Talent Finder is how a home, a factory, or a company finds a skilled hand.</p>
+      <p>Search a plumber, electrician, carpenter, welder, painter, gardener, tailor, cleaner, cook, or home tutor in your own town.</p>
+      <p>Open the Talent ID, look at the work, and hire someone close by without leaving your area.</p>
+      <div class="chips">
+        <span>Plumber</span><span>Electrician</span><span>Carpenter</span><span>Welder</span><span>Painter</span>
+        <span>Gardener</span><span>Tailor</span><span>Cleaner</span><span>Cook</span><span>Home tutor</span>
+      </div>
+      <div class="share">
+        <a id="share-wa" class="ghost" href="#">Share on WhatsApp</a>
+        <a id="share-fb" class="ghost" href="#">Share on Facebook</a>
+        <a id="share-x" class="ghost" href="#">Share on X</a>
+        <a id="share-li" class="ghost" href="#">Share on LinkedIn</a>
+        <button id="share-copy" class="secondary" type="button">Copy link</button>
+      </div>
+    </section>
+
+    <section id="about-finder">
+      <h2>What Talent Finder is</h2>
+      <p>Talent Finder is a public directory of skilled hands in Ghana and Zambia. A home, a factory, or a company searches a trade, opens a Talent ID, and looks at photos of finished work.</p>
+      <h2 style="margin-top:16px">How it works</h2>
+      <p>A skilled person posts a name, a skill, a town, and photos of their own work. They receive a Talent ID. A hirer searches that skill, agrees to check the person, and only then sees the messaging IDs the talent chose to show.</p>
+      <h2 style="margin-top:16px">Who it is for</h2>
+      <p>It is for households, factories, and companies that need a plumber, electrician, carpenter, welder, painter, gardener, tailor, cleaner, cook, or home tutor nearby. It is also for the person who does that work and wants to be found.</p>
+    </section>
+
+    <section id="faq">
+      <h2>Questions</h2>
+      <h3 style="margin:14px 0 4px;font-weight:500">Does Talent Finder check the person?</h3>
+      <p>No. It shows the work the person posted. You must check the skill yourself before you hire.</p>
+      <h3 style="margin:14px 0 4px;font-weight:500">Which countries are listed?</h3>
+      <p>Ghana and Zambia.</p>
+      <h3 style="margin:14px 0 4px;font-weight:500">What is public on a Talent ID?</h3>
+      <p>The name, skill, town, years, a description, photos of the work, and the messaging IDs the person turns on. An email address, a phone number, and an identity document are not shown.</p>
+    </section>
+
+    <section id="connect">
+      <h2>Connect Supabase</h2>
+      <p class="muted">Paste your project URL and publishable key. They stay in this browser. The key must be the publishable (anon) key, never the secret key.</p>
+      <div class="row two" style="margin-top:12px">
+        <label>Project URL
+          <input id="sb-url" placeholder="https://xxxx.supabase.co" autocomplete="off" />
+        </label>
+        <label>Publishable key
+          <input id="sb-key" placeholder="sb_publishable_... or anon key" autocomplete="off" />
+        </label>
+      </div>
+      <div class="actions">
+        <button id="save-keys" type="button">Save and connect</button>
+      </div>
+      <p id="status" class="note" style="margin-top:12px" hidden></p>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy notice</h2>
+      <p class="muted">Read this before you create an account.</p>
+      <div class="muted" style="margin-top:10px">
+        <p>Talent Finder is a directory of work for Ghana and Zambia. We collect your email and password so you can sign in, and the profile you choose to publish: name, skill, country, town, years, a description, a photo of finished work, and an optional social link.</p>
+        <p style="margin-top:8px">We use this to show your work to people in Ghana and Zambia and to let you delete it. We calculate your age on this page and then discard the date. We do not save a date of birth.</p>
+        <p style="margin-top:8px">Supabase stores the account and the profile. The profile and work photo are public. Your email and password are not shown on the profile.</p>
+        <p style="margin-top:8px">To delete it, sign in and press Delete my account. That removes the talent post, the photos, the job records, and, after the SQL below has been run, the login as well.</p>
+        <p style="margin-top:8px">The fee is GHC 10 per year in Ghana. The app does not check a licence and does not list health, vet, or childcare work. A photo of a child, a patient, an identity card, or the inside of someone else's home is not allowed. Anyone signed in can report a profile, and a moderator can hide it.</p>
+      </div>
+    </section>
+
+    <section id="auth-card">
+      <div class="tabs">
+        <button type="button" id="tab-in">Sign in</button>
+        <button type="button" id="tab-up" class="secondary">Sign up</button>
+      </div>
+      <form id="auth-form" class="row">
+        <label>Email
+          <input id="email" type="email" required autocomplete="username" />
+        </label>
+        <label>Password
+          <input id="password" type="password" required minlength="6" autocomplete="current-password" />
+        </label>
+        <div id="dob-fields" hidden>
+          <p class="muted">Date of birth. Type the day, month, and year, or pick the date on the calendar.</p>
+          <div class="dob" style="margin-top:10px">
+            <label>Day
+              <input id="dob-day" inputmode="numeric" maxlength="2" placeholder="DD" autocomplete="bday-day" />
+            </label>
+            <label>Month
+              <input id="dob-month" inputmode="numeric" maxlength="2" placeholder="MM" autocomplete="bday-month" />
+            </label>
+            <label>Year
+              <input id="dob-year" inputmode="numeric" maxlength="4" placeholder="YYYY" autocomplete="bday-year" />
+            </label>
+          </div>
+          <label style="margin-top:10px">Calendar
+            <input id="dob-cal" type="date" />
+          </label>
+          <p id="fee-auth" class="muted" style="margin-top:10px">The fee is GHC 10 per year in Ghana.</p>
+          <label class="check" style="margin-top:12px">
+            <input id="privacy-ok" type="checkbox" />
+            <span>I have read the privacy notice.</span>
+          </label>
+        </div>
+        <p id="ineligible" class="note" hidden>This date of birth is under 18. Sign up is closed, and this person cannot create an account.</p>
+        <div class="actions">
+          <button id="auth-submit" type="submit">Sign in</button>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Search by skill</h2>
+      <div class="note" style="margin:12px 0">
+        <p>Before you hire, check the work, the place, and the person yourself. Talent Finder shows what the talent posted. It does not check a licence, and it does not confirm who they are.</p>
+        <label class="check" style="margin-top:10px">
+          <input id="diligence" type="checkbox" />
+          <span>I will do my own due diligence before I contact or hire anyone on this page.</span>
+        </label>
+      </div>
+      <form id="search-form" class="row three">
+        <label>Skill
+          <input id="q" placeholder="Plumber, gardener, welder" />
+        </label>
+        <label>Country
+          <select id="country-filter">
+            <option value="">Any country</option>
+          </select>
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      <div id="results" class="grid cards" style="margin-top:14px"></div>
+    </section>
+
+    <section id="report-box" hidden>
+      <h2>Report a profile</h2>
+      <p id="report-who" class="muted"></p>
+      <label style="margin-top:10px">Reason
+        <select id="report-reason">
+          <option>Photo shows a child</option>
+          <option>Photo shows a patient</option>
+          <option>Photo shows an identity card</option>
+          <option>Photo shows the inside of a home</option>
+          <option>This is not their work</option>
+          <option>Unsafe or abusive</option>
+        </select>
+      </label>
+      <div class="actions">
+        <button id="send-report" type="button">Send report</button>
+      </div>
+    </section>
+
+    <section id="message-box" hidden>
+      <h2>Message this Talent ID</h2>
+      <p id="message-who" class="muted"></p>
+      <label style="margin-top:10px">Note
+        <textarea id="message-body" maxlength="500" placeholder="The job, the place, and when you need them."></textarea>
+      </label>
+      <div class="actions">
+        <button id="send-message" type="button">Send message</button>
+      </div>
+    </section>
+
+    <section id="review-box" hidden>
+      <h2>Reviewer</h2>
+      <p class="muted">A reviewer can hide or restore a reported post. This role has no admin code and cannot read messages or change roles.</p>
+      <div id="review-list" class="grid" style="margin-top:12px"></div>
+    </section>
+
+    <section id="admin-box" hidden>
+      <h2>Admin</h2>
+      <div id="admin-2fa">
+        <p class="muted">This second code is for an admin only. A talent or a hirer is never asked for it.</p>
+        <img id="admin-qr" alt="Admin code setup" hidden style="width:180px;height:180px;background:#fff;border-radius:12px" />
+        <p id="admin-secret" class="muted" style="margin-top:8px"></p>
+        <div class="actions">
+          <button id="admin-enroll" type="button">Set up admin code</button>
+        </div>
+        <label style="margin-top:10px">6-digit code
+          <input id="admin-code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" />
+        </label>
+        <div class="actions">
+          <button id="admin-verify" type="button">Confirm code</button>
+        </div>
+      </div>
+      <div id="admin-tools" hidden>
+        <p id="admin-role-note" class="muted"></p>
+        <div class="row two" style="margin-top:12px">
+          <label>Account email
+            <input id="admin-email" type="email" placeholder="name@example.com" />
+          </label>
+          <label>Role
+            <select id="grant-role">
+              <option value="reviewer">Reviewer</option>
+            </select>
+          </label>
+        </div>
+        <div class="actions">
+          <button id="admin-grant" type="button">Grant role</button>
+        </div>
+        <div class="row two" style="margin-top:12px">
+          <label>Remove this email from staff
+            <input id="revoke-email" type="email" placeholder="name@example.com" />
+          </label>
+        </div>
+        <div class="actions">
+          <button id="admin-revoke" class="secondary" type="button">Remove role</button>
+        </div>
+        <h3 style="margin:16px 0 6px;font-weight:500">Reports</h3>
+        <div id="report-list" class="grid"></div>
+        <h3 style="margin:16px 0 6px;font-weight:500">Message IDs</h3>
+        <div id="admin-messages" class="grid"></div>
+      </div>
+    </section>
+
+    <form id="profile-form" class="card" hidden>
+      <h2>Your talent post</h2>
+      <p id="talent-id" class="note" hidden></p>
+      <div class="actions">
+        <button id="share-id" class="secondary" type="button">Share my Talent ID</button>
+      </div>
+      <p class="muted" style="margin-top:8px">Post photos of your own finished work. You can add more, remove any of them, edit this post, or delete the account. Do not post an identity card, a passport, a child, a patient, or the inside of someone else's home.</p>
+      <div class="row two" style="margin-top:12px">
+        <label>Name clients should see
+          <input id="display-name" required minlength="2" />
+        </label>
+        <label>Skill
+          <input id="skill" list="skills" required placeholder="Type a skill or pick one" />
+        </label>
+        <label>Country
+          <select id="country" required></select>
+        </label>
+        <label>Town or area
+          <input id="place" required placeholder="Osu, Accra or Kabwata, Lusaka" />
+        </label>
+        <label>Years of experience
+          <input id="years" type="number" min="0" max="60" value="3" required />
+        </label>
+      </div>
+      <h3 style="margin:16px 0 6px;font-weight:500">Messaging IDs</h3>
+      <p class="muted">Add the accounts you actually use. A hirer sees them only after agreeing to check you themselves. Leave any blank.</p>
+      <div class="row two" style="margin-top:10px">
+        <label>Facebook ID
+          <input id="msg-facebook" placeholder="your.page" maxlength="50" />
+        </label>
+        <label>Instagram ID
+          <input id="msg-instagram" placeholder="yourwork" maxlength="50" />
+        </label>
+        <label>TikTok ID
+          <input id="msg-tiktok" placeholder="yourwork" maxlength="50" />
+        </label>
+        <label>X ID
+          <input id="msg-x" placeholder="yourwork" maxlength="50" />
+        </label>
+      </div>
+      <label style="margin-top:10px">About the work
+        <textarea id="about" required minlength="40" placeholder="Describe a real job you finished. At least 40 characters."></textarea>
+      </label>
+      <h3 style="margin:16px 0 6px;font-weight:500">Photos and records of your own work</h3>
+      <div id="work-list" class="grid"></div>
+      <label style="margin-top:10px">Add a photo of your own work
+        <input id="photo" type="file" accept="image/jpeg,image/png,image/webp" />
+      </label>
+      <label style="margin-top:10px">Add a written record of a job you finished
+        <input id="work-title" placeholder="Replaced a kitchen tap in Osu" />
+      </label>
+      <div class="actions">
+        <button id="add-record" class="secondary" type="button">Add this record</button>
+      </div>
+      <p class="muted" style="margin-top:12px">An automatic check runs on the text and each photo before it is saved. The database repeats that check. The fee is GHC 10 per year in Ghana. Health, vet, and childcare skills are not listed.</p>
+      <label class="check" style="margin-top:12px">
+        <input id="photo-ok" type="checkbox" />
+        <span>These photos and records are of my own work. They do not show a child, a patient, an identity card, or the inside of someone else's home.</span>
+      </label>
+      <div class="actions">
+        <button type="submit">Save my talent post</button>
+        <button id="delete-profile" class="secondary" type="button">Delete my account</button>
+      </div>
+      <h3 style="margin:18px 0 6px;font-weight:500">Messages for your Talent ID</h3>
+      <div id="inbox" class="grid"></div>
+    </form>
+
+    <section>
+      <h2>Before you contact anyone</h2>
+      <p class="muted">A hirer must check the photos of the work and do their own due diligence before hiring. The talent post is not a guarantee. If something is not their work, use Report.</p>
+      <details style="margin-top:12px">
+        <summary class="muted">Run this once in the Supabase SQL editor</summary>
+        <pre id="sql"></pre>
+      </details>
+    </section>
+  </main>
+  <datalist id="skills"></datalist>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script>
+    // PASTE YOUR TWO SUPABASE VALUES BETWEEN THE QUOTES (Project Settings > API). Use the publishable/anon key only, never the secret key.
+    const SUPABASE_URL = "";
+    const SUPABASE_KEY = "";
+    const COUNTRIES = ["Ghana", "Zambia"];
+    const SKILLS = ["Home tutor", "Gardener", "Painter", "Plumber", "Electrician", "Carpenter", "Welder", "Tailor", "Cleaner", "Laundry specialist", "Hairstylist", "Cook", "Driver", "Mason", "Tiler", "Air conditioner repairer", "Fridge repairer", "Satellite installer", "Web designer", "Graphic designer", "Software developer", "IT support", "Photographer", "Event attendant", "Shoemaker", "Organist"];
+    const BLOCKED_SKILL = /nurse|nanny|veterinar|\bvet\b|doctor|patient|midwife|childcare|babysit/i;
+    const SQL = `create table if not exists public.profiles (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  display_name text not null,
+  skill text not null,
+  country text not null,
+  place text not null,
+  years int not null default 1,
+  about text not null,
+  photo_url text,
+  social text,
+  created_at timestamptz not null default now(),
+  unique (user_id)
+);
+alter table public.profiles enable row level security;
+drop policy if exists "Anyone can read profiles" on public.profiles;
+create policy "Anyone can read profiles" on public.profiles for select to anon, authenticated using (true);
+drop policy if exists "Users insert their own profile" on public.profiles;
+create policy "Users insert their own profile" on public.profiles for insert to authenticated with check (auth.uid() = user_id);
+drop policy if exists "Users update their own profile" on public.profiles;
+create policy "Users update their own profile" on public.profiles for update to authenticated using (auth.uid() = user_id) with check (auth.uid() = user_id);
+alter table public.profiles drop constraint if exists profiles_limits;
+alter table public.profiles add constraint profiles_limits check (
+  char_length(display_name) between 2 and 80 and char_length(skill) between 2 and 60 and char_length(place) between 2 and 120
+  and char_length(about) between 40 and 1500 and years between 0 and 60
+  and country in ('Ghana','Zambia')
+  and (photo_url is null or char_length(photo_url) < 350000)
+  and (social is null or social = '' or social ~ '^https://'));
+alter table public.profiles add column if not exists hidden boolean not null default false;
+alter table public.profiles add column if not exists msg_facebook text not null default '';
+alter table public.profiles add column if not exists msg_instagram text not null default '';
+alter table public.profiles add column if not exists msg_tiktok text not null default '';
+alter table public.profiles add column if not exists msg_x text not null default '';
+create table if not exists public.moderators (
+  user_id uuid primary key references auth.users(id) on delete cascade
+);
+alter table public.moderators enable row level security;
+drop policy if exists "See own moderator row" on public.moderators;
+create policy "See own moderator row" on public.moderators for select to authenticated using (user_id = auth.uid());
+drop policy if exists "Anyone can read profiles" on public.profiles;
+create policy "Anyone can read profiles" on public.profiles for select to anon, authenticated
+  using (hidden = false or auth.uid() = user_id or exists (select 1 from public.moderators m where m.user_id = auth.uid()));
+drop policy if exists "Users delete their own profile" on public.profiles;
+create policy "Users delete their own profile" on public.profiles for delete to authenticated using (auth.uid() = user_id);
+create table if not exists public.reports (
+  id uuid primary key default gen_random_uuid(),
+  profile_user_id uuid not null,
+  reporter_id uuid not null references auth.users(id) on delete cascade,
+  reason text not null,
+  created_at timestamptz not null default now()
+);
+alter table public.reports enable row level security;
+drop policy if exists "Signed-in people can report" on public.reports;
+create policy "Signed-in people can report" on public.reports for insert to authenticated with check (auth.uid() = reporter_id);
+drop policy if exists "Moderators read reports" on public.reports;
+create policy "Moderators read reports" on public.reports for select to authenticated
+  using (exists (select 1 from public.moderators m where m.user_id = auth.uid()));
+drop policy if exists "Moderators hide profiles" on public.profiles;
+create policy "Moderators hide profiles" on public.profiles for update to authenticated
+  using (exists (select 1 from public.moderators m where m.user_id = auth.uid()))
+  with check (exists (select 1 from public.moderators m where m.user_id = auth.uid()));
+create or replace function public.delete_my_account()
+returns void language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid();
+begin
+  if me is null then raise exception 'Sign in first'; end if;
+  delete from public.reports where reporter_id = me or profile_user_id = me;
+  delete from public.messages where sender_id = me or talent_user_id = me;
+  delete from public.work_items where user_id = me;
+  delete from public.profiles where user_id = me;
+  delete from auth.users where id = me;
+end;
+$$;
+grant execute on function public.delete_my_account() to authenticated;
+create or replace function public.moderate_profile()
+returns trigger language plpgsql as $func$
+declare blob text;
+begin
+  blob := lower(coalesce(new.display_name, '') || ' ' || coalesce(new.skill, '') || ' ' || coalesce(new.place, '') || ' ' || coalesce(new.about, '') || ' ' || coalesce(new.social, '') || ' ' || coalesce(new.msg_facebook, '') || ' ' || coalesce(new.msg_instagram, '') || ' ' || coalesce(new.msg_tiktok, '') || ' ' || coalesce(new.msg_x, ''));
+  if blob ~ '(nurse|nanny|veterinar|doctor|patient|midwife|childcare|babysit|passport|identity card|ghana card|porn|nude|\\mxxx\\M)' then
+    raise exception 'Automatic check: this listing is not allowed.';
+  end if;
+  if blob ~ '[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}' then
+    raise exception 'Automatic check: do not put an email address on the public profile.';
+  end if;
+  if blob ~ '[0-9]([ -]?[0-9]){9,}' then
+    raise exception 'Automatic check: do not put a phone number on the public profile.';
+  end if;
+  if new.photo_url is null or new.photo_url !~ '^data:image/jpeg' or char_length(new.photo_url) < 800 then
+    raise exception 'Automatic check: upload a photo of the finished work.';
+  end if;
+  return new;
+end;
+$func$;
+drop trigger if exists moderate_profile_trigger on public.profiles;
+create trigger moderate_profile_trigger
+before insert or update of display_name, skill, place, about, social, photo_url, msg_facebook, msg_instagram, msg_tiktok, msg_x on public.profiles
+for each row execute function public.moderate_profile();
+create table if not exists public.work_items (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  kind text not null check (kind in ('photo', 'note')),
+  title text not null,
+  body text not null default '',
+  photo_url text,
+  created_at timestamptz not null default now()
+);
+alter table public.work_items enable row level security;
+drop policy if exists "Read work items" on public.work_items;
+create policy "Read work items" on public.work_items for select to anon, authenticated
+  using (auth.uid() = user_id or exists (select 1 from public.profiles p where p.user_id = work_items.user_id and p.hidden = false));
+drop policy if exists "Add own work items" on public.work_items;
+create policy "Add own work items" on public.work_items for insert to authenticated with check (auth.uid() = user_id);
+drop policy if exists "Remove own work items" on public.work_items;
+create policy "Remove own work items" on public.work_items for delete to authenticated using (auth.uid() = user_id);
+create or replace function public.moderate_work_item()
+returns trigger language plpgsql as $func$
+declare blob text;
+begin
+  blob := lower(coalesce(new.title, '') || ' ' || coalesce(new.body, ''));
+  if blob ~ '(nurse|nanny|veterinar|doctor|patient|midwife|childcare|babysit|passport|identity card|ghana card|porn|nude|\\mxxx\\M)' then
+    raise exception 'Automatic check: this work record is not allowed.';
+  end if;
+  if blob ~ '[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}' or blob ~ '[0-9]([ -]?[0-9]){9,}' then
+    raise exception 'Automatic check: do not put an email or a phone number on a work record.';
+  end if;
+  if new.kind = 'photo' and (new.photo_url is null or new.photo_url !~ '^data:image/jpeg' or char_length(new.photo_url) < 800) then
+    raise exception 'Automatic check: add a photo of your own work.';
+  end if;
+  if new.kind = 'photo' and (select count(*) from public.work_items w where w.user_id = new.user_id and w.kind = 'photo' and w.id is distinct from new.id) >= 4 then
+    raise exception 'You can keep up to 4 photos of your work.';
+  end if;
+  return new;
+end;
+$func$;
+drop trigger if exists moderate_work_item_trigger on public.work_items;
+create trigger moderate_work_item_trigger
+before insert or update on public.work_items
+for each row execute function public.moderate_work_item();
+create table if not exists public.admins (
+  user_id uuid primary key references auth.users(id) on delete cascade
+);
+insert into public.admins (user_id)
+select user_id from public.moderators
+on conflict do nothing;
+alter table public.admins enable row level security;
+create or replace function public.is_admin()
+returns boolean language plpgsql stable security definer set search_path = public as $$
+begin
+  if coalesce(auth.jwt() ->> 'aal', '') <> 'aal2' then
+    return false;
+  end if;
+  return exists (select 1 from public.admins where user_id = auth.uid());
+end;
+$$;
+grant execute on function public.is_admin() to anon, authenticated;
+drop policy if exists "See own admin row" on public.admins;
+create policy "See own admin row" on public.admins for select to authenticated
+  using (user_id = auth.uid() or public.is_admin());
+create or replace function public.grant_admin(target_email text)
+returns void language plpgsql security definer set search_path = public as $$
+declare uid uuid;
+begin
+  if not public.is_admin() then raise exception 'Admin code required'; end if;
+  select id into uid from auth.users where lower(email) = lower(target_email);
+  if uid is null then raise exception 'No account with that email'; end if;
+  insert into public.admins (user_id) values (uid) on conflict do nothing;
+end;
+$$;
+create or replace function public.revoke_admin(target uuid)
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Admin code required'; end if;
+  if target = auth.uid() then raise exception 'You cannot remove your own admin role'; end if;
+  delete from public.admins where user_id = target;
+end;
+$$;
+grant execute on function public.grant_admin(text) to authenticated;
+grant execute on function public.revoke_admin(uuid) to authenticated;
+drop policy if exists "Moderators hide profiles" on public.profiles;
+drop policy if exists "Admins update profiles" on public.profiles;
+create policy "Admins update profiles" on public.profiles for update to authenticated
+  using (public.is_admin()) with check (public.is_admin());
+drop policy if exists "Moderators read reports" on public.reports;
+create policy "Admins read reports" on public.reports for select to authenticated using (public.is_admin());
+create table if not exists public.messages (
+  id uuid primary key default gen_random_uuid(),
+  talent_user_id uuid not null,
+  sender_id uuid not null references auth.users(id) on delete cascade,
+  body text not null,
+  created_at timestamptz not null default now(),
+  check (char_length(body) between 2 and 500)
+);
+alter table public.messages enable row level security;
+drop policy if exists "Send a message" on public.messages;
+create policy "Send a message" on public.messages for insert to authenticated
+  with check (auth.uid() = sender_id and sender_id <> talent_user_id);
+drop policy if exists "Read own messages" on public.messages;
+create policy "Read own messages" on public.messages for select to authenticated
+  using (auth.uid() = sender_id or auth.uid() = talent_user_id or public.is_admin());
+drop policy if exists "Admins remove messages" on public.messages;
+create policy "Admins remove messages" on public.messages for delete to authenticated using (public.is_admin());
+create or replace function public.moderate_message()
+returns trigger language plpgsql as $func$
+begin
+  if lower(new.body) ~ '(porn|nude|passport|identity card|ghana card)' then
+    raise exception 'Automatic check: this message is not allowed.';
+  end if;
+  if new.body ~ '[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}' or new.body ~ '[0-9]([ -]?[0-9]){9,}' then
+    raise exception 'Automatic check: do not put an email or a phone number in a message.';
+  end if;
+  return new;
+end;
+$func$;
+drop trigger if exists moderate_message_trigger on public.messages;
+create trigger moderate_message_trigger
+before insert or update on public.messages
+for each row execute function public.moderate_message();
+alter table public.admins add column if not exists role text;
+update public.admins set role = 'owner' where role is null;
+alter table public.admins alter column role set default 'reviewer';
+alter table public.admins alter column role set not null;
+alter table public.admins drop constraint if exists admins_role_check;
+alter table public.admins add constraint admins_role_check check (role in ('reviewer', 'admin', 'owner'));
+create or replace function public.is_admin()
+returns boolean language plpgsql stable security definer set search_path = public as $$
+declare r text;
+begin
+  if coalesce(auth.jwt() ->> 'aal', '') <> 'aal2' then return false; end if;
+  select role into r from public.admins where user_id = auth.uid();
+  return r in ('admin', 'owner');
+end;
+$$;
+create or replace function public.is_owner()
+returns boolean language plpgsql stable security definer set search_path = public as $$
+begin
+  if coalesce(auth.jwt() ->> 'aal', '') <> 'aal2' then return false; end if;
+  return exists (select 1 from public.admins where user_id = auth.uid() and role = 'owner');
+end;
+$$;
+create or replace function public.can_review()
+returns boolean language plpgsql stable security definer set search_path = public as $$
+declare r text;
+begin
+  select role into r from public.admins where user_id = auth.uid();
+  if r = 'reviewer' then return true; end if;
+  if r in ('admin', 'owner') and coalesce(auth.jwt() ->> 'aal', '') = 'aal2' then return true; end if;
+  return false;
+end;
+$$;
+grant execute on function public.is_owner() to authenticated;
+grant execute on function public.can_review() to authenticated;
+drop policy if exists "Admins update profiles" on public.profiles;
+create policy "Admins update profiles" on public.profiles for update to authenticated
+  using (public.can_review()) with check (public.can_review());
+drop policy if exists "Admins read reports" on public.reports;
+create policy "Admins read reports" on public.reports for select to authenticated using (public.can_review());
+create or replace function public.grant_role(target_email text, next_role text)
+returns void language plpgsql security definer set search_path = public as $$
+declare uid uuid;
+begin
+  if next_role not in ('reviewer', 'admin', 'owner') then raise exception 'Unknown role'; end if;
+  if next_role = 'reviewer' then
+    if not public.is_admin() then raise exception 'Admin code required'; end if;
+  elsif not public.is_owner() then
+    raise exception 'Only the owner can grant an admin or an owner';
+  end if;
+  select id into uid from auth.users where lower(email) = lower(target_email);
+  if uid is null then raise exception 'No account with that email'; end if;
+  insert into public.admins (user_id, role) values (uid, next_role)
+  on conflict (user_id) do update set role = excluded.role;
+end;
+$$;
+create or replace function public.revoke_role(target_email text)
+returns void language plpgsql security definer set search_path = public as $$
+declare uid uuid;
+declare current_role text;
+begin
+  select id into uid from auth.users where lower(email) = lower(target_email);
+  if uid is null then raise exception 'No account with that email'; end if;
+  if uid = auth.uid() then raise exception 'You cannot remove your own role'; end if;
+  select role into current_role from public.admins where user_id = uid;
+  if current_role is null then raise exception 'That account has no staff role'; end if;
+  if public.is_owner() then
+    delete from public.admins where user_id = uid;
+    return;
+  end if;
+  if public.is_admin() and current_role = 'reviewer' then
+    delete from public.admins where user_id = uid;
+    return;
+  end if;
+  raise exception 'You cannot remove that role';
+end;
+$$;
+grant execute on function public.grant_role(text, text) to authenticated;
+grant execute on function public.revoke_role(text) to authenticated;
+-- After you sign up, make yourself the owner (replace the email), then sign in and set up the admin code:
+-- insert into public.admins (user_id, role) select id, 'owner' from auth.users where email = 'you@example.com' on conflict (user_id) do update set role = 'owner';`;
+
+    const $ = (id) => document.getElementById(id);
+    let client = null;
+    let mode = "in";
+    let photoData = "";
+    let user = null;
+    let reportUserId = "";
+    let workItems = [];
+    let adminFactorId = "";
+    let messageTalentId = "";
+
+    function cleanHandle(value) {
+      return String(value || "").trim().replace(/^@+/, "");
+    }
+    function validHandle(value) {
+      return value === "" || /^[A-Za-z0-9._]{2,50}$/.test(value);
+    }
+    function messagingLinks(person, open) {
+      if (!open) return "<p class='muted' style='margin-top:8px'>Messaging IDs stay hidden until you confirm you will check this person yourself.</p>";
+      const rows = [
+        ["Facebook", person.msg_facebook, "https://www.facebook.com/"],
+        ["Instagram", person.msg_instagram, "https://www.instagram.com/"],
+        ["TikTok", person.msg_tiktok, "https://www.tiktok.com/@"],
+        ["X", person.msg_x, "https://x.com/"],
+      ].filter((row) => row[1]);
+      if (!rows.length) return "<p class='muted' style='margin-top:8px'>No messaging ID on this post.</p>";
+      return "<p style='margin-top:8px'>" + rows.map((row) => "<a href='" + esc(row[2] + row[1]) + "'>" + esc(row[0]) + ": " + esc(row[1]) + "</a>").join("<br>") + "</p>";
+    }
+
+    function talentId(country, userId) {
+      const prefix = country === "Zambia" ? "ZM" : "GH";
+      return prefix + "-" + String(userId || "").replace(/-/g, "").slice(0, 8).toUpperCase();
+    }
+
+    $("sql").textContent = SQL;
+    SKILLS.forEach((skill) => {
+      const option = document.createElement("option");
+      option.value = skill;
+      $("skills").appendChild(option);
+    });
+    for (const select of [$("country"), $("country-filter")]) {
+      COUNTRIES.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        select.appendChild(option);
+      });
+    }
+
+    function say(message) {
+      const node = $("status");
+      node.hidden = !message;
+      node.textContent = message || "";
+    }
+    function esc(value) {
+      return String(value ?? "")
+        .replace(/&/g, "\u0026amp;")
+        .replace(/</g, "\u0026lt;")
+        .replace(/>/g, "\u0026gt;")
+        .replace(/"/g, "\u0026quot;")
+        .replace(/'/g, "\u0026#39;");
+    }
+    function keys() {
+      return {
+        url: SUPABASE_URL || localStorage.getItem("tf_sb_url") || "",
+        key: SUPABASE_KEY || localStorage.getItem("tf_sb_key") || "",
+      };
+    }
+    function connect() {
+      const saved = keys();
+      $("sb-url").value = saved.url;
+      $("sb-key").value = saved.key;
+      $("connect").hidden = Boolean(SUPABASE_URL && SUPABASE_KEY);
+      if (!saved.url || !saved.key || !window.supabase) {
+        client = null;
+        say(window.supabase ? "Add the Supabase URL and publishable key." : "The Supabase library did not load. Check the network and refresh.");
+        return;
+      }
+      client = window.supabase.createClient(saved.url, saved.key);
+      say("Connected to Supabase.");
+      client.auth.getSession().then(({ data }) => setUser(data.session?.user || null));
+      client.auth.onAuthStateChange((_event, session) => setUser(session?.user || null));
+      search();
+    }
+    function setUser(next) {
+      user = next;
+      $("sign-out").hidden = !user;
+      $("auth-card").hidden = Boolean(user);
+      $("profile-form").hidden = !user;
+      $("admin-box").hidden = true;
+      $("review-box").hidden = true;
+      $("report-box").hidden = true;
+      $("message-box").hidden = true;
+      if (user) {
+        loadMine();
+        loadAdmin();
+      }
+    }
+    function setMode(next) {
+      if (next === "up" && localStorage.getItem("tf_ineligible") === "1") next = "in";
+      mode = next;
+      $("tab-in").className = next === "in" ? "" : "secondary";
+      $("tab-up").className = next === "up" ? "" : "secondary";
+      $("auth-submit").textContent = next === "in" ? "Sign in" : "Create account";
+      $("password").autocomplete = next === "in" ? "current-password" : "new-password";
+      $("dob-fields").hidden = next !== "up";
+    }
+
+    function pad(number) {
+      return String(number).padStart(2, "0");
+    }
+    function readDob() {
+      const day = Number($("dob-day").value);
+      const month = Number($("dob-month").value);
+      const year = Number($("dob-year").value);
+      if (!Number.isInteger(day) || !Number.isInteger(month) || !Number.isInteger(year)) return null;
+      if (year < 1900 || month < 1 || month > 12 || day < 1 || day > 31) return null;
+      const date = new Date(year, month - 1, day);
+      if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
+      if (date > new Date()) return null;
+      return date;
+    }
+    function ageOf(date) {
+      const today = new Date();
+      let age = today.getFullYear() - date.getFullYear();
+      const month = today.getMonth() - date.getMonth();
+      if (month < 0 || (month === 0 && today.getDate() < date.getDate())) age -= 1;
+      return age;
+    }
+    function lockSignup() {
+      localStorage.setItem("tf_ineligible", "1");
+      $("tab-up").disabled = true;
+      $("ineligible").hidden = false;
+      $("dob-day").value = "";
+      $("dob-month").value = "";
+      $("dob-year").value = "";
+      $("dob-cal").value = "";
+      setMode("in");
+    }
+
+    async function search() {
+      const box = $("results");
+      if (!client) {
+        box.innerHTML = "<p class='muted'>Connect Supabase to search.</p>";
+        return;
+      }
+      if (!$("diligence").checked) {
+        box.innerHTML = "<p class='muted'>Tick the due diligence box to see talent posts. You must check the person yourself before you hire.</p>";
+        return;
+      }
+      const skill = $("q").value.trim();
+      const country = $("country-filter").value;
+      let query = client.from("profiles").select("user_id,display_name,skill,country,place,years,about,photo_url,msg_facebook,msg_instagram,msg_tiktok,msg_x").order("created_at", { ascending: false }).limit(40);
+      if (skill) query = query.ilike("skill", "%" + skill.replace(/[%_]/g, "") + "%");
+      if (country) query = query.eq("country", country);
+      const { data, error } = await query;
+      if (error) {
+        box.innerHTML = "<p class='note'>" + esc(error.message) + ". If the table is missing, run the SQL below.</p>";
+        return;
+      }
+      if (!data || !data.length) {
+        box.innerHTML = "<p class='muted'>No one has listed that skill yet.</p>";
+        return;
+      }
+      const ids = data.map((person) => person.user_id);
+      const extra = await client.from("work_items").select("user_id,kind,title,photo_url").in("user_id", ids);
+      const byUser = {};
+      (extra.data || []).forEach((item) => {
+        if (!byUser[item.user_id]) byUser[item.user_id] = [];
+        byUser[item.user_id].push(item);
+      });
+      const diligence = $("diligence").checked;
+      box.innerHTML = data.map((person) => {
+        const photos = (byUser[person.user_id] || []).filter((item) => item.photo_url).slice(0, 3);
+        const notes = (byUser[person.user_id] || []).filter((item) => item.kind === "note").slice(0, 3);
+        const images = photos.length
+          ? photos.map((item) => "<img alt='Photo of finished " + esc(person.skill) + " work in " + esc(person.place) + "' src='" + esc(item.photo_url) + "' loading='lazy' />").join("")
+          : "<img alt='Photo of finished " + esc(person.skill) + " work in " + esc(person.place) + "' src='" + esc(person.photo_url || "") + "' loading='lazy' />";
+        const records = notes.map((item) => "<p class='muted'>" + esc(item.title) + "</p>").join("");
+        const contact = messagingLinks(person, diligence);
+        const messageButton = diligence ? "<button type='button' class='secondary message' data-id='" + esc(person.user_id) + "' data-name='" + esc(person.display_name) + "'>Message this Talent ID</button>" : "";
+        const share = cardShare(person);
+        return "<article class='person'>" + images + "<div><p class='skill'>" + esc(person.skill) + "</p><h3 style='margin:4px 0'>" + esc(person.display_name) + "</h3><p class='muted'>Talent ID " + esc(talentId(person.country, person.user_id)) + " · " + esc(person.years) + " years · " + esc(person.place) + ", " + esc(person.country) + "</p><p style='margin-top:8px'>" + esc(person.about) + "</p>" + records + contact + "<p class='muted' style='margin-top:8px'>Do your own due diligence before you hire.</p>" + share + "<div class='actions'><button type='button' class='secondary report' data-id='" + esc(person.user_id) + "' data-name='" + esc(person.display_name) + "'>Report this profile</button>" + messageButton + "</div></div></article>";
+      }).join("");
+      writeTalentSchema(data);
+    }
+
+    function cardShare(person) {
+      const id = talentId(person.country, person.user_id);
+      const url = location.origin + location.pathname + "?skill=" + encodeURIComponent(person.skill);
+      const text = person.display_name + " does " + person.skill + " in " + person.place + ". Talent ID " + id + ". Check the work yourself. " + url;
+      return "<div class='actions'>"
+        + "<a href='https://wa.me/?text=" + encodeURIComponent(text) + "'>Share on WhatsApp</a>"
+        + "<a href='https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "'>Share on Facebook</a>"
+        + "<a href='https://twitter.com/intent/tweet?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(person.display_name + " · " + person.skill + " · Talent ID " + id) + "'>Share on X</a>"
+        + "<a href='https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(url) + "'>Share on LinkedIn</a>"
+        + "<button type='button' class='secondary copy-talent' data-text='" + esc(text) + "'>Copy link</button>"
+        + "</div>";
+    }
+    function writeTalentSchema(people) {
+      const previous = document.getElementById("talent-schema");
+      if (previous) previous.remove();
+      const data = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: people.map((person, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Service",
+            name: person.skill + " in " + person.place,
+            areaServed: person.place + ", " + person.country,
+            provider: { "@type": "Person", name: person.display_name },
+          },
+        })),
+      };
+      const script = document.createElement("script");
+      script.id = "talent-schema";
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(data);
+      document.head.appendChild(script);
+    }
+
+    function renderWork() {
+      const box = $("work-list");
+      if (!workItems.length) {
+        box.innerHTML = "<p class='muted'>No photos or job records yet. Add a photo of your own work.</p>";
+        return;
+      }
+      box.innerHTML = workItems.map((item) => {
+        const image = item.photo_url ? "<img alt='Photo of your own finished work' src='" + esc(item.photo_url) + "' loading='lazy' style='width:100%;max-height:180px;object-fit:cover;border-radius:12px' />" : "";
+        return "<article class='note'>" + image + "<p>" + esc(item.title || "Photo of my work") + "</p><button type='button' class='secondary remove-work' data-id='" + esc(item.id) + "'>Remove</button></article>";
+      }).join("");
+    }
+    async function loadWork() {
+      const { data, error } = await client.from("work_items").select("id,kind,title,body,photo_url").eq("user_id", user.id).order("created_at", { ascending: true });
+      if (error) {
+        workItems = [];
+        renderWork();
+        return say(error.message + " Run the SQL below if the work table is missing.");
+      }
+      workItems = data || [];
+      const first = workItems.find((item) => item.photo_url);
+      photoData = first ? first.photo_url : "";
+      renderWork();
+    }
+    async function loadMine() {
+      const { data } = await client.from("profiles").select("*").eq("user_id", user.id).maybeSingle();
+      await loadWork();
+      const country = (data && data.country) || $("country").value || COUNTRIES[0];
+      $("talent-id").hidden = false;
+      $("talent-id").textContent = "Your Talent ID is " + talentId(country, user.id) + ". It stays with this account. You can edit the post, add or remove photos and records, or delete the account.";
+      loadInbox();
+      if (!data) return;
+      $("display-name").value = data.display_name || "";
+      $("skill").value = data.skill || "";
+      $("country").value = data.country || COUNTRIES[0];
+      $("place").value = data.place || "";
+      $("years").value = data.years || 1;
+      $("about").value = data.about || "";
+      $("msg-facebook").value = data.msg_facebook || "";
+      $("msg-instagram").value = data.msg_instagram || "";
+      $("msg-tiktok").value = data.msg_tiktok || "";
+      $("msg-x").value = data.msg_x || "";
+      if (!photoData && data.photo_url) photoData = data.photo_url;
+    }
+    async function loadInbox() {
+      const box = $("inbox");
+      const { data, error } = await client.from("messages").select("id,body,created_at").eq("talent_user_id", user.id).order("created_at", { ascending: false }).limit(20);
+      if (error) {
+        box.innerHTML = "<p class='muted'>" + esc(error.message) + "</p>";
+        return;
+      }
+      box.innerHTML = data && data.length
+        ? data.map((row) => "<article class='note'><p class='muted'>Message ID " + esc(String(row.id).slice(0, 8)) + "</p><p>" + esc(row.body) + "</p></article>").join("")
+        : "<p class='muted'>No messages yet.</p>";
+    }
+
+    function screenPhoto(canvas) {
+      const context = canvas.getContext("2d");
+      const width = canvas.width;
+      const height = canvas.height;
+      if (width < 180 || height < 180) throw new Error("That picture is too small to be a photo of finished work.");
+      const ratio = width / height;
+      const sample = context.getImageData(0, 0, width, height).data;
+      let count = 0;
+      let saturation = 0;
+      const step = 10;
+      for (let y = 0; y < height; y += step) {
+        for (let x = 0; x < width; x += step) {
+          const index = (y * width + x) * 4;
+          const red = sample[index];
+          const green = sample[index + 1];
+          const blue = sample[index + 2];
+          const max = Math.max(red, green, blue);
+          const min = Math.min(red, green, blue);
+          saturation += max === 0 ? 0 : (max - min) / max;
+          count += 1;
+        }
+      }
+      const average = saturation / Math.max(1, count);
+      if (ratio > 1.45 && ratio < 1.7 && average < 0.22) {
+        throw new Error("That picture looks like an identity card or a document. Upload a photo of the finished work.");
+      }
+    }
+    function moderateText(parts) {
+      const blob = parts.join(" ").toLowerCase();
+      if (BLOCKED_SKILL.test(blob) || /passport|identity card|ghana card|\bnrc\b|porn|nude|\bxxx\b/.test(blob)) {
+        return "Automatic check: health, vet, childcare, identity documents, and sexual content are not allowed.";
+      }
+      if (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(blob)) {
+        return "Automatic check: do not put an email address on the public profile.";
+      }
+      if (/[0-9]([ -]?[0-9]){9,}/.test(blob)) {
+        return "Automatic check: do not put a phone number on the public profile.";
+      }
+      return "";
+    }
+    function compress(file) {
+      return new Promise((resolve, reject) => {
+        if (/passport|identity|ghana\s*card|id[-_ ]?card|\bnrc\b|patient|child|baby|infant/i.test(file.name || "")) {
+          reject(new Error("That file name is not allowed. Upload a photo of the finished work."));
+          return;
+        }
+        const image = new Image();
+        image.onload = () => {
+          const scale = Math.min(1, 800 / Math.max(image.width, image.height));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.round(image.width * scale));
+          canvas.height = Math.max(1, Math.round(image.height * scale));
+          canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+          try {
+            screenPhoto(canvas);
+          } catch (error) {
+            reject(error);
+            return;
+          }
+          resolve(canvas.toDataURL("image/jpeg", 0.7));
+        };
+        image.onerror = () => reject(new Error("Use a JPG, PNG, or WEBP photo of the work."));
+        image.src = URL.createObjectURL(file);
+      });
+    }
+
+    $("save-keys").onclick = () => {
+      const url = $("sb-url").value.trim().replace(/\/$/, "");
+      const key = $("sb-key").value.trim();
+      if (!/^https:\/\/.+\.supabase\.co$/i.test(url)) {
+        say("The URL should look like https://xxxx.supabase.co");
+        return;
+      }
+      if (key.length < 20) {
+        say("Paste the publishable key from Supabase, Project Settings, API.");
+        return;
+      }
+      localStorage.setItem("tf_sb_url", url);
+      localStorage.setItem("tf_sb_key", key);
+      connect();
+    };
+    $("tab-in").onclick = () => setMode("in");
+    $("tab-up").onclick = () => setMode("up");
+    $("dob-day").addEventListener("input", syncFromParts);
+    $("dob-month").addEventListener("input", syncFromParts);
+    $("dob-year").addEventListener("input", syncFromParts);
+    $("dob-cal").addEventListener("change", syncFromCal);
+    function syncFromParts() {
+      const dob = readDob();
+      $("dob-cal").value = dob ? dob.getFullYear() + "-" + pad(dob.getMonth() + 1) + "-" + pad(dob.getDate()) : "";
+    }
+    function syncFromCal() {
+      const value = $("dob-cal").value;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return;
+      const [year, month, day] = value.split("-");
+      $("dob-year").value = String(Number(year));
+      $("dob-month").value = String(Number(month));
+      $("dob-day").value = String(Number(day));
+    }
+    if (localStorage.getItem("tf_ineligible") === "1") lockSignup();
+    $("auth-form").onsubmit = async (event) => {
+      event.preventDefault();
+      if (!client) return say("Connect Supabase first.");
+      const email = $("email").value.trim();
+      const password = $("password").value;
+      if (mode === "up") {
+        if (localStorage.getItem("tf_ineligible") === "1") {
+          lockSignup();
+          return say("Sign up is closed. A date of birth under 18 cannot create an account.");
+        }
+        if (!$("privacy-ok").checked) return say("Read the privacy notice, then tick the box.");
+        const dob = readDob();
+        if (!dob) return say("Type a real day, month, and year of birth.");
+        if (ageOf(dob) < 18) {
+          lockSignup();
+          return say("Sign up is closed. This date of birth is under 18, so this person cannot create an account.");
+        }
+        $("dob-day").value = "";
+        $("dob-month").value = "";
+        $("dob-year").value = "";
+        $("dob-cal").value = "";
+        const result = await client.auth.signUp({ email, password });
+        if (result.error) return say(result.error.message);
+        if (!result.data.session) say("Account created. The fee is GHC 10 per year. Confirm the email, then sign in.");
+        else say("Account created. The fee is GHC 10 per year.");
+        return;
+      }
+      const result = await client.auth.signInWithPassword({ email, password });
+      if (result.error) return say(result.error.message);
+      say("Signed in.");
+    };
+    $("sign-out").onclick = async () => {
+      if (client) await client.auth.signOut();
+      say("Signed out.");
+    };
+    $("search-form").onsubmit = (event) => {
+      event.preventDefault();
+      if (!$("diligence").checked) return say("Tick the due diligence box before you search. You must check the person yourself.");
+      search();
+    };
+    $("diligence").onchange = () => {
+      sessionStorage.setItem("tf_diligence", $("diligence").checked ? "1" : "");
+      if ($("diligence").checked) search();
+    };
+    if (sessionStorage.getItem("tf_diligence") === "1") $("diligence").checked = true;
+    $("photo").onchange = async (event) => {
+      const file = event.target.files && event.target.files[0];
+      event.target.value = "";
+      if (!file) return;
+      if (!client || !user) return say("Sign in before you add a photo.");
+      if (workItems.filter((item) => item.kind === "photo").length >= 4) return say("You can keep up to 4 photos. Remove one first.");
+      try {
+        const photo = await compress(file);
+        const { data, error } = await client.from("work_items").insert({
+          user_id: user.id,
+          kind: "photo",
+          title: "Photo of my own work",
+          body: "",
+          photo_url: photo,
+        }).select("id,kind,title,body,photo_url").single();
+        if (error) return say(error.message);
+        workItems.push(data);
+        photoData = photo;
+        renderWork();
+        say("Photo added. It is of your work only if you confirmed that below.");
+      } catch (error) {
+        say(error.message);
+      }
+    };
+    $("add-record").onclick = async () => {
+      if (!client || !user) return say("Sign in first.");
+      const title = $("work-title").value.trim();
+      if (title.length < 8) return say("Describe the job in at least 8 characters.");
+      if (workItems.filter((item) => item.kind === "note").length >= 8) return say("You can keep up to 8 job records. Remove one first.");
+      const blocked = moderateText([title]);
+      if (blocked) return say(blocked);
+      const { data, error } = await client.from("work_items").insert({
+        user_id: user.id,
+        kind: "note",
+        title,
+        body: "",
+        photo_url: null,
+      }).select("id,kind,title,body,photo_url").single();
+      if (error) return say(error.message);
+      workItems.push(data);
+      $("work-title").value = "";
+      renderWork();
+      say("Job record added.");
+    };
+    $("work-list").addEventListener("click", async (event) => {
+      const button = event.target.closest("button.remove-work");
+      if (!button || !client || !user) return;
+      const id = button.getAttribute("data-id");
+      const { error } = await client.from("work_items").delete().eq("id", id).eq("user_id", user.id);
+      if (error) return say(error.message);
+      workItems = workItems.filter((item) => item.id !== id);
+      const first = workItems.find((item) => item.photo_url);
+      photoData = first ? first.photo_url : "";
+      renderWork();
+      say("Removed.");
+    });
+    $("profile-form").onsubmit = async (event) => {
+      event.preventDefault();
+      if (!client || !user) return say("Sign in first.");
+      if (!photoData) return say("Add at least one photo of your own work.");
+      if (!$("photo-ok").checked) return say("Confirm that the photos and records are of your own work, with no child, patient, identity card, or the inside of a home.");
+      const row = {
+        user_id: user.id,
+        display_name: $("display-name").value.trim(),
+        skill: $("skill").value.trim(),
+        country: $("country").value,
+        place: $("place").value.trim(),
+        years: Number($("years").value) || 0,
+        about: $("about").value.trim(),
+        photo_url: photoData,
+        social: "",
+        msg_facebook: cleanHandle($("msg-facebook").value),
+        msg_instagram: cleanHandle($("msg-instagram").value),
+        msg_tiktok: cleanHandle($("msg-tiktok").value),
+        msg_x: cleanHandle($("msg-x").value),
+      };
+      if (BLOCKED_SKILL.test(row.skill)) return say("Health, vet, and childcare listings are not allowed.");
+      const handles = [row.msg_facebook, row.msg_instagram, row.msg_tiktok, row.msg_x];
+      if (handles.some((handle) => !validHandle(handle))) return say("A messaging ID can use letters, numbers, dots, and underscores only.");
+      const blocked = moderateText([row.display_name, row.skill, row.place, row.about, handles.join(" ")]);
+      if (blocked) return say(blocked);
+      if (!COUNTRIES.includes(row.country)) return say("Choose Ghana or Zambia.");
+      const { error } = await client.from("profiles").upsert(row, { onConflict: "user_id" });
+      if (error) return say(error.message);
+      say("Talent post saved. Your Talent ID is " + talentId(row.country, user.id) + ".");
+      $("talent-id").hidden = false;
+      $("talent-id").textContent = "Your Talent ID is " + talentId(row.country, user.id) + ". It stays with this account. You can edit the post, add or remove photos and records, or delete the account.";
+      search();
+    };
+    $("results").addEventListener("click", (event) => {
+      const copyTalent = event.target.closest("button.copy-talent");
+      if (copyTalent) {
+        const text = copyTalent.getAttribute("data-text") || pageLink();
+        navigator.clipboard.writeText(text).then(() => say("Link copied.")).catch(() => say(text));
+        return;
+      }
+      const report = event.target.closest("button.report");
+      const message = event.target.closest("button.message");
+      if (report) {
+        if (!user) return say("Sign in to report a profile.");
+        reportUserId = report.getAttribute("data-id") || "";
+        $("report-who").textContent = report.getAttribute("data-name") || "";
+        $("report-box").hidden = false;
+        return;
+      }
+      if (!message) return;
+      if (!user) return say("Sign in to send a message.");
+      if (!$("diligence").checked) return say("Confirm due diligence before you message anyone.");
+      messageTalentId = message.getAttribute("data-id") || "";
+      if (messageTalentId === user.id) return say("You cannot message your own Talent ID.");
+      $("message-who").textContent = message.getAttribute("data-name") || "";
+      $("message-box").hidden = false;
+    });
+    $("send-message").onclick = async () => {
+      if (!client || !user || !messageTalentId) return say("Sign in to send a message.");
+      const body = $("message-body").value.trim();
+      if (body.length < 2) return say("Write a short note.");
+      const blocked = moderateText([body]);
+      if (blocked) return say(blocked);
+      const { data, error } = await client.from("messages").insert({
+        talent_user_id: messageTalentId,
+        sender_id: user.id,
+        body,
+      }).select("id").single();
+      if (error) return say(error.message);
+      $("message-body").value = "";
+      $("message-box").hidden = true;
+      say("Message sent. Message ID " + String(data.id).slice(0, 8) + ".");
+    };
+    $("send-report").onclick = async () => {
+      if (!client || !user || !reportUserId) return say("Sign in to report a profile.");
+      if (reportUserId === user.id) return say("You cannot report your own profile.");
+      const { error } = await client.from("reports").insert({
+        profile_user_id: reportUserId,
+        reporter_id: user.id,
+        reason: $("report-reason").value,
+      });
+      if (error) return say(error.message);
+      $("report-box").hidden = true;
+      say("Report sent. An admin can hide the profile after confirming the admin code.");
+    };
+    $("report-list").addEventListener("click", async (event) => {
+      const hide = event.target.closest("button.hide-profile");
+      const show = event.target.closest("button.show-profile");
+      const button = hide || show;
+      if (!button || !client) return;
+      const { error } = await client.from("profiles").update({ hidden: Boolean(hide) }).eq("user_id", button.getAttribute("data-id"));
+      if (error) return say(error.message);
+      say(hide ? "Profile hidden." : "Profile restored.");
+      search();
+      loadAdmin();
+    });
+    $("admin-messages").addEventListener("click", async (event) => {
+      const button = event.target.closest("button.remove-message");
+      if (!button || !client) return;
+      const { error } = await client.from("messages").delete().eq("id", button.getAttribute("data-id"));
+      if (error) return say(error.message);
+      say("Message removed.");
+      loadAdmin();
+    });
+    $("admin-enroll").onclick = async () => {
+      if (!client) return;
+      const listed = await client.auth.mfa.listFactors();
+      for (const factor of (listed.data && listed.data.totp) || []) {
+        if (factor.status !== "verified") await client.auth.mfa.unenroll({ factorId: factor.id });
+      }
+      const { data, error } = await client.auth.mfa.enroll({ factorType: "totp", friendlyName: "Talent Finder admin" });
+      if (error) return say(error.message + " Turn on MFA in the Supabase Authentication settings if it is switched off.");
+      adminFactorId = data.id;
+      $("admin-qr").hidden = false;
+      $("admin-qr").src = data.totp.qr_code;
+      $("admin-secret").textContent = "If you cannot scan the picture, type this secret into an authenticator app: " + data.totp.secret;
+    };
+    $("admin-verify").onclick = async () => {
+      if (!client || !adminFactorId) return say("Set up the admin code first.");
+      const code = $("admin-code").value.trim();
+      if (!/^\d{6}$/.test(code)) return say("Enter the 6-digit admin code.");
+      const challenge = await client.auth.mfa.challenge({ factorId: adminFactorId });
+      if (challenge.error) return say(challenge.error.message);
+      const verified = await client.auth.mfa.verify({ factorId: adminFactorId, challengeId: challenge.data.id, code });
+      if (verified.error) return say(verified.error.message);
+      $("admin-code").value = "";
+      say("Admin code confirmed.");
+      loadAdmin();
+    };
+    $("review-list").addEventListener("click", async (event) => {
+      const hide = event.target.closest("button.hide-profile");
+      const show = event.target.closest("button.show-profile");
+      const button = hide || show;
+      if (!button || !client) return;
+      const { error } = await client.from("profiles").update({ hidden: Boolean(hide) }).eq("user_id", button.getAttribute("data-id"));
+      if (error) return say(error.message);
+      say(hide ? "Profile hidden." : "Profile restored.");
+      search();
+      loadAdmin();
+    });
+    $("admin-grant").onclick = async () => {
+      if (!client) return;
+      const email = $("admin-email").value.trim();
+      const nextRole = $("grant-role").value;
+      if (!email) return say("Enter the email of an account that already exists.");
+      const { error } = await client.rpc("grant_role", { target_email: email, next_role: nextRole });
+      if (error) return say(error.message);
+      $("admin-email").value = "";
+      say(nextRole === "reviewer" ? "Reviewer granted. They are not asked for an admin code." : "Role granted. They must set up an admin code on the next sign-in.");
+    };
+    $("admin-revoke").onclick = async () => {
+      if (!client) return;
+      const email = $("revoke-email").value.trim();
+      if (!email) return say("Enter the email to remove.");
+      const { error } = await client.rpc("revoke_role", { target_email: email });
+      if (error) return say(error.message);
+      $("revoke-email").value = "";
+      say("Role removed.");
+    };
+    function reportCards(rows) {
+      return rows.length
+        ? rows.map((row) => "<div class='note'><p>" + esc(row.reason) + "</p><div class='actions'><button type='button' class='secondary hide-profile' data-id='" + esc(row.profile_user_id) + "'>Hide</button><button type='button' class='secondary show-profile' data-id='" + esc(row.profile_user_id) + "'>Restore</button></div></div>").join("")
+        : "<p class='muted'>No reports yet.</p>";
+    }
+    async function loadAdmin() {
+      $("admin-box").hidden = true;
+      $("admin-tools").hidden = true;
+      $("review-box").hidden = true;
+      const gate = await client.from("admins").select("role").eq("user_id", user.id).maybeSingle();
+      if (!gate.data) return;
+      const role = gate.data.role || "reviewer";
+      if (role === "reviewer") {
+        $("review-box").hidden = false;
+        const reports = await client.from("reports").select("id,profile_user_id,reason").order("created_at", { ascending: false }).limit(30);
+        $("review-list").innerHTML = reportCards(reports.data || []);
+        return;
+      }
+      $("admin-box").hidden = false;
+      const assurance = await client.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (!(assurance.data && assurance.data.currentLevel === "aal2")) {
+        $("admin-2fa").hidden = false;
+        const listed = await client.auth.mfa.listFactors();
+        const verifiedFactor = ((listed.data && listed.data.totp) || []).find((factor) => factor.status === "verified");
+        if (verifiedFactor) {
+          adminFactorId = verifiedFactor.id;
+          $("admin-enroll").hidden = true;
+          $("admin-secret").textContent = "Enter the 6-digit code from your authenticator app.";
+        } else {
+          $("admin-enroll").hidden = false;
+          $("admin-secret").textContent = "Set up the admin code once. Talents and reviewers are not asked for it.";
+        }
+        return;
+      }
+      $("admin-2fa").hidden = true;
+      $("admin-tools").hidden = false;
+      $("admin-role-note").textContent = role === "owner"
+        ? "You are the owner. You can grant a reviewer, an admin, or another owner."
+        : "You are an admin. You can grant or remove a reviewer. Only the owner can grant an admin.";
+      const choices = role === "owner" ? ["reviewer", "admin", "owner"] : ["reviewer"];
+      $("grant-role").innerHTML = choices.map((item) => "<option value='" + item + "'>" + item.charAt(0).toUpperCase() + item.slice(1) + "</option>").join("");
+      const reports = await client.from("reports").select("id,profile_user_id,reason").order("created_at", { ascending: false }).limit(30);
+      $("report-list").innerHTML = reportCards(reports.data || []);
+      const messages = await client.from("messages").select("id,talent_user_id,body").order("created_at", { ascending: false }).limit(30);
+      const notes = messages.data || [];
+      $("admin-messages").innerHTML = notes.length
+        ? notes.map((row) => "<div class='note'><p class='muted'>Message ID " + esc(String(row.id).slice(0, 8)) + " · Talent " + esc(String(row.talent_user_id).slice(0, 8)) + "</p><p>" + esc(row.body) + "</p><button type='button' class='secondary remove-message' data-id='" + esc(row.id) + "'>Remove message</button></div>").join("")
+        : "<p class='muted'>No messages yet.</p>";
+    }
+    $("delete-profile").onclick = async () => {
+      if (!client || !user) return say("Sign in first.");
+      if (!window.confirm("Delete this talent post, its photos and records, and close the account?")) return;
+      await client.from("profiles").delete().eq("user_id", user.id);
+      const { error } = await client.rpc("delete_my_account");
+      photoData = "";
+      try { await client.auth.signOut(); } catch (ignore) { /* the login may already be gone */ }
+      say(error ? "Talent post deleted. Run the SQL once so the login can be removed too." : "Your talent post and account have been deleted.");
+    };
+    const pitch = "Talent Finder finds a plumber, electrician, carpenter, welder, painter, gardener, tailor, cleaner, cook, or home tutor near you. ";
+    const pageLink = () => location.href.split("#")[0];
+    $("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(pitch + pageLink());
+    $("share-fb").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(pageLink());
+    $("share-x").href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(pitch) + "&url=" + encodeURIComponent(pageLink());
+    $("share-li").href = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(pageLink());
+    $("share-copy").onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(pageLink());
+        say("Link copied. Paste it in WhatsApp, Facebook, X, or LinkedIn.");
+      } catch (ignore) {
+        say(pageLink());
+      }
+    };
+    $("share-id").onclick = async () => {
+      if (!user) return say("Sign in to share your Talent ID.");
+      const id = talentId($("country").value, user.id);
+      const name = $("display-name").value.trim() || "A skilled hand";
+      const skill = $("skill").value.trim() || "skilled work";
+      const place = $("place").value.trim();
+      const url = location.origin + location.pathname + "?skill=" + encodeURIComponent(skill);
+      const text = name + " does " + skill + (place ? " in " + place : "") + ". Talent ID " + id + ". Check the work yourself. " + url;
+      try {
+        await navigator.clipboard.writeText(text);
+        say("Talent ID copied. It does not include an email or a phone number.");
+      } catch (ignore) {
+        say(text);
+      }
+    };
+    const presetSkill = new URLSearchParams(location.search).get("skill");
+    if (presetSkill) $("q").value = presetSkill;
+    connect();
+  </script>
+</body>
+</html>
