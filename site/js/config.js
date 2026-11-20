@@ -1,7 +1,7 @@
 /** One place for limits and copy so the screens do not each invent a number. */
 
-export const SUPABASE_URL = "";
-export const SUPABASE_KEY = "";
+export const SUPABASE_URL = "https://fgwizmxsywnteaigdplx.supabase.co";
+export const SUPABASE_KEY = "sb_publishable_jPtS5iBQM7n5EQXgtxu5Zw_9Ezk1Ley";
 
 export const COUNTRIES = ["Ghana", "Zambia"];
 
