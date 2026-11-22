@@ -44,8 +44,7 @@
     const skills = ['Plumber', 'Electrician', 'Carpenter', 'Welder', 'Painter', 'Gardener', 'Tailor', 'Cleaner', 'Cook', 'Home tutor'];
     const quick = document.createElement('section');
     quick.id = 'quick';
-    quick.dataset.v = 'find';
-    quick.innerHTML = '<h2>Find a skilled hand near you</h2><p class="muted">Tap a trade, or type your own below.</p><div class="chips"></div>';
+    quick.dataset.v = 'find'; quick.innerHTML = '<h2>Find a skilled hand near you</h2><p class="muted">10 popular trades. Tap one, or choose Other skills to type your own.</p><div class="chips"></div>';
     const box = quick.querySelector('.chips');
     skills.forEach((name) => {
       const b = document.createElement('button');
