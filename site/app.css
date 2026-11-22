@@ -5,11 +5,14 @@ h1, h2 { font-family: Georgia, "Iowan Old Style", serif; }
 /* The old advertisement block stays in the page (main.js uses its share buttons) but is hidden */
 .ad { display: none !important; }
 
-/* Compact sticky header */
-header { position: sticky; top: 0; z-index: 20; background: var(--paper); padding: 10px 0; }
-.mark { width: 44px; height: 44px; border-radius: 12px; }
-h1 { font-size: 22px; }
-.slogan { font-size: 13px; margin: 2px 0 0; }
+/* Compact sticky header: logo, name and a small button on one row */
+header { position: sticky; top: 0; z-index: 20; background: var(--paper); padding: 8px 0; flex-wrap: nowrap; gap: 10px; border-bottom: 1px solid var(--line); }
+.brand { gap: 10px; min-width: 0; flex: 1; }
+.mark { width: 52px; height: 52px; border-radius: 12px; background: #fff; padding: 2px; object-fit: contain; }
+h1 { font-size: 20px; white-space: nowrap; }
+.slogan { font-size: 12px; margin: 2px 0 0; }
+header button { padding: 8px 14px; font-size: 13px; white-space: nowrap; }
+@media (max-width: 420px) { .slogan { display: none; } }
 
 /* One screen at a time */
 body[data-view="find"] main > [data-v]:not([data-v="find"]),
