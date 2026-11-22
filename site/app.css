@@ -1,5 +1,5 @@
 /* Talent Finder app shell. Add on top of the existing page styles. */
-body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding-bottom: 88px; }
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding-bottom: 150px; }
 h1, h2 { font-family: Georgia, "Iowan Old Style", serif; }
 
 /* The old advertisement block stays in the page (main.js uses its share buttons) but is hidden */
@@ -20,19 +20,21 @@ body[data-view="account"] main > [data-v]:not([data-v="account"]),
 body[data-view="about"] main > [data-v]:not([data-v="about"]) { display: none !important; }
 
 /* Quick start trades */
-#quick h2 { margin: 0 0 4px; }
+#quick h2 { margin: 0 0 4px; font-size: 22px; }
 #quick .chips { margin-top: 12px; }
 #quick .chips button {
   background: #fff; color: var(--ink); border: 1px solid var(--line);
   padding: 8px 14px; font-size: 14px; font-weight: 600;
 }
 #quick .chips button:active { background: var(--teal); color: var(--teal-ink); }
+#quick .chips button.other { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-/* Bottom navigation */
+/* Bottom navigation: floats above the Netlify badge */
 #tabbar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  display: flex; gap: 4px; padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
-  background: var(--ink);
+  position: fixed; left: 12px; right: 12px; bottom: 72px; z-index: 30;
+  display: flex; gap: 4px; padding: 6px;
+  background: var(--ink); border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(20, 32, 51, 0.25);
 }
 #tabbar button {
   flex: 1; display: grid; justify-items: center; gap: 2px;
@@ -47,5 +49,5 @@ details.dev { background: transparent; border: 1px dashed var(--line); border-ra
 details.dev > summary { cursor: pointer; }
 
 @media (min-width: 720px) {
-  #tabbar { left: 50%; right: auto; width: 420px; transform: translateX(-50%); border-radius: 20px 20px 0 0; }
+  #tabbar { left: 50%; right: auto; width: 420px; transform: translateX(-50%); }
 }
