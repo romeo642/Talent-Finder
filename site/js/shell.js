@@ -36,6 +36,14 @@
   if (conn) dev.appendChild(conn);
   if (sqlBox) dev.appendChild(sqlBox);
   main.appendChild(dev);
+    // Keep the message line (errors, "check your email") visible on every screen
+  const status = $('#status');
+  if (status) {
+    main.prepend(status);
+    new MutationObserver(() => {
+      if (!status.hidden) status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).observe(status, { attributes: true, attributeFilter: ['hidden'], childList: true, characterData: true, subtree: true });
+  }
 
   // 4. Quick start: tap a trade to search it
   const form = $('#search-form');
