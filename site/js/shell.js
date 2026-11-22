@@ -57,7 +57,19 @@
       });
       box.appendChild(b);
     });
-    searchSec.before(quick);
+      const other = document.createElement('button');
+    other.type = 'button';
+    other.className = 'other';
+    other.textContent = 'Other skills';
+    other.addEventListener('click', () => {
+      q.value = '';
+      q.placeholder = 'Type any skill, e.g. mason, hairdresser, driver';
+      q.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      q.focus();
+    });
+    box.appendChild(other);
+
+     searchSec.before(quick);
   }
 
   // 5. Link from the sign-up checkbox to the privacy notice
